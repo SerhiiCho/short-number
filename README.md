@@ -7,6 +7,7 @@ Light package that shortens given number by taking digits and adding K, M, B or 
     - [Change language](https://github.com/SerhiiCho/short-number#change-language)
     - [Output to uppercase](https://github.com/SerhiiCho/short-number#output-to-uppercase)
 - [Contribute](https://github.com/SerhiiCho/short-number#contribute)
+- [Usage](https://github.com/SerhiiCho/short-number#usage)
 
 ## Supported languages
 
@@ -34,6 +35,15 @@ use Serhii\ShortNumber\Conv;
 
 Conv::short(1352); // returns: 1K
 Conv::short(1352, 'lower'); // returns: 1k
+```
+
+## Usage
+
+```php
+use Serhii\ShortNumber\Conv;
+
+Conv::short(1909234); // returns: 1M
+Conv::short(20234); // returns: 20K
 ```
 
 ## Contribute
