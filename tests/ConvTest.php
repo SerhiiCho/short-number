@@ -77,6 +77,23 @@ class ConvTest extends TestCase
 
     public function Provider_for_returns_correct_number_between_899999_and_899999999(): array
     {
-        return $this->generateDataForProvider(900000, 899999999, 100000, 1000000);
+        return $this->generateDataForProvider(900000, 899999999, 1000000, 1000000);
+    }
+
+    /**
+     * @dataProvider Provider_for_returns_correct_number_above_899999999
+     * @test
+     * @param int $num_before
+     * @param int $num_after
+     */
+    public function returns_correct_number_above_899999999(int $num_before, int $num_after): void
+    {
+        $failed_message = "Failed on test #$num_before";
+        $this->assertEquals("{$num_after}B", Conv::short($num_before), $failed_message);
+    }
+
+    public function Provider_for_returns_correct_number_above_899999999(): array
+    {
+        return $this->generateDataForProvider(900000000, 100000000000, 100000000, 1000000000);
     }
 }
