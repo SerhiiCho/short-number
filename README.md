@@ -30,7 +30,7 @@ Conv::short(20234); // returns: 20K
 
 #### Change language
 
-For changing the language you want to call `set` method once before calling other methods from this package.
+> For changing the language you want to call `set` method once before calling other methods from this package.
 
 ```php
 Serhii\ShortNumber\Lang::set('ru');
@@ -38,7 +38,7 @@ Serhii\ShortNumber\Lang::set('ru');
 
 #### Output to uppercase
 
-By default uppercase is set, to make it lower just pass `lower` as the seconds argument to a `short` method.
+> By default uppercase is set, to make it lower just pass `lower` as the seconds argument to a `short` method.
 
 ```php
 use Serhii\ShortNumber\Conv;
@@ -49,7 +49,7 @@ Conv::short(1352, ['lower']); // returns: 1k
 
 #### Round the number
 
-If number is at 90% or above to the next digit, it will round it. For example **1899** will be converted to **1K**, but **1900** to **2K**. To change the percent use option `round n`, where **n** is percent for round edge.
+> If number is at 90% or above to the next digit, it will round it. For example **1899** will be converted to **1K**, but **1900** to **2K**. To change the percent use option `round n`, where **n** is percent for round edge.
 
 ```php
 use Serhii\ShortNumber\Conv;
