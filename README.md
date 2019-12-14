@@ -1,4 +1,4 @@
-<h2 align="center">Ago</h2>
+<h2 align="center">Short number</h2>
 
 Light package that shortens given number by taking digits and adding K, M, B or T after them. For example **1234** will be formatted to **1K** and **20244023** to **20M**. Package supports multiple languages, the default is English.
 
