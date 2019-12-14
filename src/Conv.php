@@ -10,10 +10,10 @@ class Conv
      * return this number with 'мил.' after.
      *
      * @param int $number
-     * @param array|string|null $options
+     * @param array|null $options
      * @return string
      */
-    public static function short(int $number, $options = null): string
+    public static function short(int $number, ?array $options = []): string
     {
         switch (true) {
             case $number < 900: // 0 - 900

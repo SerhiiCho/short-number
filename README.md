@@ -35,7 +35,7 @@ By default uppercase is set, to make it lower just pass `lower` as the seconds a
 use Serhii\ShortNumber\Conv;
 
 Conv::short(1352); // returns: 1K
-Conv::short(1352, 'lower'); // returns: 1k
+Conv::short(1352, ['lower']); // returns: 1k
 ```
 
 #### Round the number
@@ -45,20 +45,23 @@ If number is at 90% or above to the next digit, it will round it. For example **
 ```php
 use Serhii\ShortNumber\Conv;
 
-Conv::short(1009, 'round 1'); // returns: 1K
-Conv::short(1010, 'round 1'); // returns: 2K
+Conv::short(1009, ['round 1']); // returns: 1K
+Conv::short(1010, ['round 1']); // returns: 2K
 
-Conv::short(1499, 'round 50'); // returns: 1K
-Conv::short(1500, 'round 50'); // returns: 2K
+Conv::short(1499, ['round 50']); // returns: 1K
+Conv::short(1500, ['round 50']); // returns: 2K
 
-Conv::short(1999, 'round 100'); // returns: 1K
-Conv::short(2000, 'round 100'); // returns: 2K
+Conv::short(1999, ['round 100']); // returns: 1K
+Conv::short(2000, ['round 100']); // returns: 2K
 ```
 
 ## Usage
 
-`short` method takes number and returns converted string.
-
+#### Synopsis:
+```
+public static Conv::short( int $number, [, array $options = [] ] ): string
+```
+#### Usage:
 ```php
 use Serhii\ShortNumber\Conv;
 
