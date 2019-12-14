@@ -3,12 +3,12 @@
 Light package that shortens given number by taking digits and adding K, M, B or T after them. For example **1234** will be formatted to **1K** and **20244023** to **20M**. Package supports multiple languages, the default is English.
 
 - [Supported languages](https://github.com/SerhiiCho/short-number#supported-languages)
+- [Usage](https://github.com/SerhiiCho/short-number#usage)
 - [Configurations](https://github.com/SerhiiCho/short-number#configurations)
     - [Change language](https://github.com/SerhiiCho/short-number#change-language)
     - [Output to uppercase](https://github.com/SerhiiCho/short-number#output-to-uppercase)
     - [Round the number](https://github.com/SerhiiCho/short-number#round-the-number)
 - [Contribute](https://github.com/SerhiiCho/short-number#contribute)
-- [Usage](https://github.com/SerhiiCho/short-number#usage)
 
 ## Supported languages
 
@@ -16,6 +16,15 @@ Light package that shortens given number by taking digits and adding K, M, B or 
 | :-------- |:------|:---------|:----------|:--------|:---------|
 | English   | en    | 1K       | 1M        | 1B      | 1T       |
 | Русский   | ru    | 1ТЫС     | 1МЛН      | 1МЛД    | 1ТРН     |
+
+## Usage
+
+```php
+use Serhii\ShortNumber\Conv;
+
+Conv::short(1909234); // returns: 2M
+Conv::short(20234); // returns: 20K
+```
 
 ## Configurations
 
@@ -53,15 +62,6 @@ Conv::short(1500, ['round 50']); // returns: 2K
 
 Conv::short(1999, ['round 100']); // returns: 1K
 Conv::short(2000, ['round 100']); // returns: 2K
-```
-
-## Usage
-
-```php
-use Serhii\ShortNumber\Conv;
-
-Conv::short(1909234); // returns: 2M
-Conv::short(20234); // returns: 20K
 ```
 
 ## Contribute
