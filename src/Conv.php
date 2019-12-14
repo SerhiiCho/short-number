@@ -2,17 +2,18 @@
 
 namespace Serhii\ShortNumber;
 
-class Number
+class Conv
 {
     /**
      * Takes number and looks at it, if this number is between 1 thousand and 1 million
      * function returns this number with "тыс." after number, if its bigger it will
      * return this number with 'мил.' after.
      *
-     * @param string $number
+     * @param int $number
+     * @param null $options
      * @return string
      */
-    public static function shorten(string $number): string
+    public static function short(int $number, $options = null): string
     {
         switch (true) {
             case $number < 900: // 0 - 900

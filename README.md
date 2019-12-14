@@ -6,16 +6,30 @@ Light package that shortens given number by taking digits and adding K, M, B or 
 
 | Language  | Short | Thousand | Million   | Billion | Trillion |
 | :-------- |:------|:---------|:----------|:--------|:---------|
-| English   | en    | 1k       | 1m        | 1b      | 1t       |
-| Русский   | ru    | 1тыс     | 1млн      | 1млд    | 1трн     |
+| English   | en    | 1K       | 1M        | 1B      | 1T       |
+| Русский   | ru    | 1ТЫС     | 1МЛН      | 1МЛД    | 1ТРН     |
 
-## Change language
+## Configurations
+
+#### Change language
 
 For changing the language you want to call `set` method once before calling other methods from this package.
 
 ```php
 Serhii\ShortNumber\Lang::set('ru');
 ```
+
+#### Output to uppercase
+
+By default uppercase is set, to make it lower just pass `lower` as the seconds argument to a `short` method.
+
+```php
+use Serhii\ShortNumber\Conv;
+
+Conv::short(1352); // returns: 1K
+Conv::short(1352, 'lower'); // returns: 1k
+```
+
 ## Contribute
 
 You can provide any issues or pull requests that are in frame of this package. For adding language support you can copy any file in `src/lang` directory and translate it. After adding language would be nice to add information about new language to a table in README.md file in section "Supported languages".
