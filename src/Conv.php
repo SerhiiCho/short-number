@@ -5,40 +5,38 @@ namespace Serhii\ShortNumber;
 class Conv
 {
     /**
+     * @var array|null
+     */
+    private static $options;
+
+    /**
      * Takes number and looks at it, if this number is between 1 thousand and 1 million
      * function returns this number with "тыс." after number, if its bigger it will
      * return this number with 'мил.' after.
      *
-     * @param int $number
+     * @param int $num
      * @param array|null $options
      * @return string
      */
-    public static function short(int $number, ?array $options = []): string
+    public static function short(int $num, ?array $options = []): string
     {
-         $rules = [
-            (object) ['edge' => 900, 'divide' => 1, 'suffix' => ''],
-            (object) ['edge' => 900000, 'divide' => 1000, 'suffix' => Lang::trans('thousand')],
-            (object) ['edge' => 900000000, 'divide' => 1000000, 'suffix' => Lang::trans('million')],
-            (object) ['edge' => 900000000000, 'divide' => 1000000000, 'suffix' => Lang::trans('billion')],
+        Lang::includeTranslations();
+
+        self::$options = $options;
+
+        $rules = [
+            new Rule(900, 1),
+            new Rule(900000, 1000, 'thousand'),
+            new Rule(900000000, 1000000, 'million'),
+            new Rule(900000000000, 1000000000, 'billion'),
         ];
 
          foreach ($rules as $rule) {
-             if ($number < $rule->edge) {
-                 return self::format($number / $rule->divide).$rule->suffix;
+             if ($num < $rule->edge) {
+                 return $rule->formatNumber($num);
              }
          }
 
-        return self::format($number / 1000000000000).Lang::trans('trillion');
-    }
-
-    /**
-     * Removes decimals from number and converts to float
-     *
-     * @param int|float $number
-     * @return float
-     */
-    private static function format($number): float
-    {
-        return (float) number_format((float) $number);
+        return (new Rule(0, 1000000000000, 'trillion'))->formatNumber($num);
     }
 }
