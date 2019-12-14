@@ -41,4 +41,28 @@ class ConvTest extends TestCase
             [899999999999999, 900, 'trillion'],
         ];
     }
+
+    /**
+     * @dataProvider Provider_for_returns_correct_number_between_0_and_899
+     * @test
+     * @param int $number
+     */
+    public function returns_correct_number_between_0_and_899(int $number): void
+    {
+        $this->assertEquals($number, Conv::short($number));
+    }
+
+    /**
+     * @return array
+     */
+    public function Provider_for_returns_correct_number_between_0_and_899(): array
+    {
+        $data = [];
+
+        for ($i = 0; $i < 899; $i++) {
+            $data[$i][] = $i;
+        }
+
+        return $data;
+    }
 }
