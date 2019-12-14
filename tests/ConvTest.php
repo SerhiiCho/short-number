@@ -18,8 +18,7 @@ class ConvTest extends TestCase
     public function short_method_converts_data_correctly(int $num_before, int $num_after, string $prefix): void
     {
         $prefix = $prefix ? Lang::trans($prefix) : '';
-        $expect = "{$num_after}<br><small>{$prefix}</small>";
-        $this->assertEquals($expect, Conv::short($num_before));
+        $this->assertEquals($num_after.$prefix, Conv::short($num_before));
     }
 
     /**
@@ -28,6 +27,9 @@ class ConvTest extends TestCase
     public function Provider_for_short_method_converts_data_correctly(): array
     {
         return [
+            [0, 0, ''],
+            [99, 99, ''],
+            [100, 100, ''],
             [899, 899, ''],
             [900, 1, 'thousand'],
             [899499, 899, 'thousand'],

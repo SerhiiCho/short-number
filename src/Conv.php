@@ -15,37 +15,30 @@ class Conv
      */
     public static function short(int $number, ?array $options = []): string
     {
-        switch (true) {
-            case $number < 900: // 0 - 900
-                $new_number = number_format((float) $number);
-                $suffix = '';
-                break;
+         $rules = [
+            (object) ['edge' => 900, 'divide' => 1, 'suffix' => ''],
+            (object) ['edge' => 900000, 'divide' => 1000, 'suffix' => Lang::trans('thousand')],
+            (object) ['edge' => 900000000, 'divide' => 1000000, 'suffix' => Lang::trans('million')],
+            (object) ['edge' => 900000000000, 'divide' => 1000000000, 'suffix' => Lang::trans('billion')],
+        ];
 
-            case $number < 900000: // 0.9k-850k
-                $new_number = number_format((float) $number / 1000);
-                $suffix = Lang::trans('thousand');
-                break;
+         foreach ($rules as $rule) {
+             if ($number < $rule->edge) {
+                 return self::format($number / $rule->divide).$rule->suffix;
+             }
+         }
 
-            case $number < 900000000: // 0.9m-850m
-                $new_number = number_format((float) $number / 1000000);
-                $suffix = Lang::trans('million');
-                break;
+        return self::format($number / 1000000000000).Lang::trans('trillion');
+    }
 
-            case $number < 900000000000: // 0.9b-850b
-                $new_number = number_format((float) $number / 1000000000);
-                $suffix = Lang::trans('billion');
-                break;
-
-            default: // 0.9t+
-                $new_number = number_format((float) $number / 1000000000000);
-                $suffix = Lang::trans('trillion');
-        }
-
-        // Remove unnecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
-        // Intentionally does not affect partials, eg "1.50" -> "1.50"
-        $dotzero = '.' . str_repeat('0', 1);
-        $new_number = str_replace($dotzero, '', $new_number);
-
-        return $new_number.$suffix;
+    /**
+     * Removes decimals from number and converts to float
+     *
+     * @param int|float $number
+     * @return float
+     */
+    private static function format($number): float
+    {
+        return (float) number_format((float) $number);
     }
 }
