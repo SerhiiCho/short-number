@@ -57,11 +57,6 @@ Conv::short(2000, ['round 100']); // returns: 2K
 
 ## Usage
 
-#### Synopsis:
-```
-public static Conv::short( int $number, [, array $options = [] ] ): string
-```
-#### Usage:
 ```php
 use Serhii\ShortNumber\Conv;
 
