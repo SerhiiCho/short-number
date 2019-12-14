@@ -7,6 +7,9 @@
 
 return [
 
-    '' => '',
+    'thousand' => 'тыс',
+    'million' => 'млн',
+    'billion' => 'млд',
+    'trillion' => 'трн',
 
 ];
