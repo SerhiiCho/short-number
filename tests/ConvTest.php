@@ -8,6 +8,24 @@ use Serhii\ShortNumber\Conv;
 class ConvTest extends TestCase
 {
     /**
+     * @param int $from
+     * @param int $until
+     * @param int $add
+     * @param int $divide
+     * @return array
+     */
+    private function generateDataForProvider(int $from, int $until, int $add, int $divide)
+    {
+        $data = [];
+
+        for ($i = $from; $i < $until; $i += $add) {
+            $data[$i] = [$i, number_format(floatval($i / $divide))];
+        }
+
+        return $data;
+    }
+
+    /**
      * @dataProvider Provider_for_returns_correct_number_between_0_and_899
      * @test
      * @param int $number
@@ -42,15 +60,8 @@ class ConvTest extends TestCase
 
     public function Provider_for_returns_correct_number_between_899_and_899999(): array
     {
-        $data = [];
-
-        for ($i = 900; $i < 899999; $i+=1000) {
-            $data[$i] = [$i, number_format(floatval($i / 1000))];
-        }
-
-        return $data;
+        return $this->generateDataForProvider(900, 899999, 1000, 1000);
     }
-
 
     /**
      * @dataProvider Provider_for_returns_correct_number_between_899999_and_899999999
@@ -66,12 +77,6 @@ class ConvTest extends TestCase
 
     public function Provider_for_returns_correct_number_between_899999_and_899999999(): array
     {
-        $data = [];
-
-        for ($i = 900000; $i < 899999999; $i+=100000) {
-            $data[$i] = [$i, number_format(floatval($i / 1000000))];
-        }
-
-        return $data;
+        return $this->generateDataForProvider(900000, 899999999, 100000, 1000000);
     }
 }
