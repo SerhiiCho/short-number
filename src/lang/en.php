@@ -7,9 +7,9 @@
 
 return [
 
-    'thousand' => 'k',
-    'million' => 'm',
-    'billion' => 'b',
-    'trillion' => 't',
+    'thousand' => 'K',
+    'million' => 'M',
+    'billion' => 'B',
+    'trillion' => 'T',
 
 ];
