@@ -1,11 +1,12 @@
 {
     "name": "serhii/short-number",
-    "description": "Light package that shortens given number by taking first digits and adding prefixes K, M, B, T",
+    "description": "Light package that shortens given number by taking digits and adding K, M, B or T after them",
     "homepage": "https://github.com/SerhiiCho/short-number",
     "keywords": ["format number", "shorten number", "library"],
     "type": "library",
     "require-dev": {
-        "phpunit/phpunit": "^7.5"
+        "phpunit/phpunit": "^7.5",
+        "symfony/var-dumper": "^5.1@dev"
     },
     "license": "MIT",
     "authors": [
