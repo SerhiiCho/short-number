@@ -6,6 +6,7 @@ Light package that shortens given number by taking digits and adding K, M, B or 
 - [Configurations](https://github.com/SerhiiCho/short-number#configurations)
     - [Change language](https://github.com/SerhiiCho/short-number#change-language)
     - [Output to uppercase](https://github.com/SerhiiCho/short-number#output-to-uppercase)
+    - [Round the number](https://github.com/SerhiiCho/short-number#round-the-number)
 - [Contribute](https://github.com/SerhiiCho/short-number#contribute)
 - [Usage](https://github.com/SerhiiCho/short-number#usage)
 
@@ -37,12 +38,31 @@ Conv::short(1352); // returns: 1K
 Conv::short(1352, 'lower'); // returns: 1k
 ```
 
-## Usage
+#### Round the number
+
+If number is at 90% or above to the next digit, it will round it. For example **1899** will be converted to **1K**, but **1900** to **2K**. To change the percent use option `round n`, where **n** is percent for round edge.
 
 ```php
 use Serhii\ShortNumber\Conv;
 
-Conv::short(1909234); // returns: 1M
+Conv::short(1009, 'round 1'); // returns: 1K
+Conv::short(1010, 'round 1'); // returns: 2K
+
+Conv::short(1499, 'round 50'); // returns: 1K
+Conv::short(1500, 'round 50'); // returns: 2K
+
+Conv::short(1999, 'round 100'); // returns: 1K
+Conv::short(2000, 'round 100'); // returns: 2K
+```
+
+## Usage
+
+`short` method takes number and returns converted string.
+
+```php
+use Serhii\ShortNumber\Conv;
+
+Conv::short(1909234); // returns: 2M
 Conv::short(20234); // returns: 20K
 ```
 

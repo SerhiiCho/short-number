@@ -10,7 +10,7 @@ class Conv
      * return this number with 'мил.' after.
      *
      * @param int $number
-     * @param null $options
+     * @param array|string|null $options
      * @return string
      */
     public static function short(int $number, $options = null): string
@@ -46,6 +46,6 @@ class Conv
         $dotzero = '.' . str_repeat('0', 1);
         $new_number = str_replace($dotzero, '', $new_number);
 
-        return "$new_number<br><small>$suffix</small>";
+        return $new_number.$suffix;
     }
 }
