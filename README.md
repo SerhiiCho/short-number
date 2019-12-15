@@ -41,28 +41,6 @@ Conv::short(1352); // returns: 1K
 Conv::short(1352, 'lower'); // returns: 1k
 ```
 
-#### Round the number
-
-If number is at 90% or above to the next digit, it will round it. For example **1899** will be converted to **1K**, but **1900** to **2K**. To make it round at 50% use option `half`.
-
-```php
-use Serhii\ShortNumber\Conv;
-
-Conv::short(500, 'half'); // returns: 1K
-Conv::short(499, 'half'); // returns: 499
-Conv::short(500); // returns: 500
-```
-
-#### Multiple options
-
-For passing multiple options just use an array as the second argument to `short` method.
-
-```php
-use Serhii\ShortNumber\Conv;
-
-Conv::short(500, ['half', 'lower']); // returns: 1k
-```
-
 ## Get started
 
 ```bash
