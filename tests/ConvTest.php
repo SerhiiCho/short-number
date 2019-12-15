@@ -13,7 +13,8 @@ class ConvTest extends TestCase
      */
     public function returns_correct_number_between_0_and_899(int $number): void
     {
-        $this->assertEquals($number, Conv::short($number));
+        $msg = "Failed on test #$number";
+        $this->assertEquals($number, Conv::short($number), $msg);
     }
 
     public function Provider_for_returns_correct_number_between_0_and_899(): array
@@ -35,8 +36,8 @@ class ConvTest extends TestCase
      */
     public function returns_correct_number_between_899_and_899999(int $num_before, int $num_after): void
     {
-        $failed_message = "Failed on test #$num_before";
-        $this->assertEquals("{$num_after}K", Conv::short($num_before), $failed_message);
+        $msg = "Failed on test #$num_before";
+        $this->assertEquals("{$num_after}K", Conv::short($num_before), $msg);
     }
 
     public function Provider_for_returns_correct_number_between_899_and_899999(): array
@@ -52,8 +53,8 @@ class ConvTest extends TestCase
      */
     public function returns_correct_number_between_899999_and_899999999(int $num_before, int $num_after): void
     {
-        $failed_message = "Failed on test #$num_before";
-        $this->assertEquals("{$num_after}M", Conv::short($num_before), $failed_message);
+        $msg = "Failed on test #$num_before";
+        $this->assertEquals("{$num_after}M", Conv::short($num_before), $msg);
     }
 
     public function Provider_for_returns_correct_number_between_899999_and_899999999(): array
@@ -69,8 +70,8 @@ class ConvTest extends TestCase
      */
     public function returns_correct_number_above_899999999(int $num_before, int $num_after): void
     {
-        $failed_message = "Failed on test #$num_before";
-        $this->assertEquals("{$num_after}B", Conv::short($num_before), $failed_message);
+        $msg = "Failed on test #$num_before";
+        $this->assertEquals("{$num_after}B", Conv::short($num_before), $msg);
     }
 
     public function Provider_for_returns_correct_number_above_899999999(): array
