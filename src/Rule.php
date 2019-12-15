@@ -55,10 +55,6 @@ class Rule
 
         $short_num = explode(',', number_format(floatval($num)))[0];
 
-//        if ($num === '100899999999990') {
-//            dd($short_num);
-//        }
-
         return $short_num.$this->getSuffix();
     }
 
