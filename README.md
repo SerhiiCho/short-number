@@ -6,7 +6,7 @@ Shortens given number by taking digits and adding K, M, B or T after them. For e
 - [Usage](https://github.com/SerhiiCho/short-number#usage)
 - [Configurations](https://github.com/SerhiiCho/short-number#configurations)
     - [Change language](https://github.com/SerhiiCho/short-number#change-language)
-    - [Output to uppercase](https://github.com/SerhiiCho/short-number#output-to-uppercase)
+    - [Output to lowercase](https://github.com/SerhiiCho/short-number#output-to-lowercase)
     - [Round the number](https://github.com/SerhiiCho/short-number#round-the-number)
 - [Contribute](https://github.com/SerhiiCho/short-number#contribute)
 
@@ -36,7 +36,7 @@ Conv::short(20234); // returns: 20K
 Serhii\ShortNumber\Lang::set('ru');
 ```
 
-#### Output to uppercase
+#### Output to lowercase
 
 > By default uppercase is set, to make it lower just pass `lower` as the seconds argument to a `short` method.
 
