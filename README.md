@@ -6,6 +6,7 @@ Shortens given number by taking digits and adding K, M, B or T after them. For e
 - [Usage](https://github.com/SerhiiCho/short-number#usage)
 - [Configurations](https://github.com/SerhiiCho/short-number#configurations)
     - [Change language](https://github.com/SerhiiCho/short-number#change-language)
+- [Options](https://github.com/SerhiiCho/short-number#options)
     - [Output to lowercase](https://github.com/SerhiiCho/short-number#output-to-lowercase)
     - [Round the number](https://github.com/SerhiiCho/short-number#round-the-number)
 - [Contribute](https://github.com/SerhiiCho/short-number#contribute)
@@ -30,15 +31,17 @@ Conv::short(20234); // returns: 20K
 
 #### Change language
 
-> For changing the language you want to call `set` method once before calling other methods from this package.
+For changing the language you want to call `set` method once before calling other methods from this package.
 
 ```php
 Serhii\ShortNumber\Lang::set('ru');
 ```
 
+## Options
+
 #### Output to lowercase
 
-> By default uppercase is set, to make it lower just pass `lower` as the seconds argument to a `short` method.
+By default uppercase is set, to make it lower just pass `lower` as the seconds argument to a `short` method.
 
 ```php
 use Serhii\ShortNumber\Conv;
@@ -49,8 +52,8 @@ Conv::short(1352, 'lower'); // returns: 1k
 
 #### Round the number
 
-> If number is at 90% or above to the next digit, it will round it. For example **1899** will be converted to **1K**, but **1900** to **2K**. To make it round at 50% use option `half`.
->
+If number is at 90% or above to the next digit, it will round it. For example **1899** will be converted to **1K**, but **1900** to **2K**. To make it round at 50% use option `half`.
+
 ```php
 use Serhii\ShortNumber\Conv;
 
