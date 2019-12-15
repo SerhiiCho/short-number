@@ -2,29 +2,10 @@
 
 namespace Tests;
 
-use PHPUnit\Framework\TestCase;
 use Serhii\ShortNumber\Conv;
 
 class ConvTest extends TestCase
 {
-    /**
-     * @param int $from
-     * @param int $until
-     * @param int $add
-     * @param int $divide
-     * @return array
-     */
-    private function generateDataForProvider(int $from, int $until, int $add, int $divide)
-    {
-        $data = [];
-
-        for ($i = $from; $i < $until; $i += $add) {
-            $data[$i] = [$i, number_format(floatval($i / $divide))];
-        }
-
-        return $data;
-    }
-
     /**
      * @dataProvider Provider_for_returns_correct_number_between_0_and_899
      * @test
