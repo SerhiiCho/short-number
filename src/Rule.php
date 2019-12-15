@@ -61,7 +61,7 @@ class Rule
             return '';
         }
 
-        if ($this->options->has('lower')) {
+        if ($this->options->contains('lower')) {
             return strtolower(Lang::trans($this->translate_key));
         }
 

@@ -22,7 +22,7 @@ class Conv
      */
     public static function short(int $num, $options = ''): string
     {
-        self::$options = self::formatOptions($options);
+        self::$options = self::formatOptions(collect($options));
 
         Lang::includeTranslations();
 
@@ -43,20 +43,13 @@ class Conv
     }
 
     /**
-     * Figures out what type of option is, and returns
-     * collection with passed options.
+     * Formats dynamic options like 'round 30' etc...
      *
-     * @param string|array $options
+     * @param \Illuminate\Support\Collection $options
      * @return \Illuminate\Support\Collection
      */
-    private static function formatOptions($options): Collection
+    private static function formatOptions(Collection $options): Collection
     {
-        if (is_array($options)) {
-            return collect($options)->map(function ($option) {
-                return new Option($option);
-            });
-        }
-
-        return collect([$options => true]);
+        return $options;
     }
 }
