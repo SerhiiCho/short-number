@@ -2,20 +2,6 @@
 
 Shortens given number by taking digits and adding K, M, B or T after them. For example **1234** will be formatted to **1K** and **20244023** to **20M**. Package supports multiple languages, the default is English.
 
--------
-- [Supported languages](https://github.com/SerhiiCho/short-number#supported-languages)
-- [Usage](https://github.com/SerhiiCho/short-number#usage)
-- [Configurations](https://github.com/SerhiiCho/short-number#configurations)
-    - [Change language](https://github.com/SerhiiCho/short-number#change-language)
-- [Options](https://github.com/SerhiiCho/short-number#options)
-    - [Output to lowercase](https://github.com/SerhiiCho/short-number#output-to-lowercase)
-    - [Round the number](https://github.com/SerhiiCho/short-number#round-the-number)
-    - [Multiple options](https://github.com/SerhiiCho/short-number#multiple-options)
-- [Get started](https://github.com/SerhiiCho/short-number#get-started)
-- [Contribute](https://github.com/SerhiiCho/short-number#contribute)
-
--------
-
 ## Supported languages
 
 | Language  | Short | Thousand | Million   | Billion | Trillion |
