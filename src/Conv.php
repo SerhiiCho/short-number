@@ -51,24 +51,11 @@ class Conv
     private static function formatOptions($options): Collection
     {
         if (is_array($options)) {
-            $options = collect(array_flip($options))->map(function ($_, $key) {
+            return collect(array_flip($options))->map(function ($_, $key) {
                 return $key;
             });
-        } else {
-            $options = collect([strval($options) => $options]);
         }
 
-        $round_options = $options->filter(function ($_, $key) {
-            return !!preg_match('/round (100|[\d]{1,2})/', $key);
-        });
-
-        if ($round_options->isNotEmpty()) {
-            [,$num] = explode(' ', $round_options->first());
-            $num = $num < 50 ? 50 : $num;
-            $num = $num > 100 ? 100 : $num;
-            $options->put('round', intval($num));
-        }
-
-        return $options;
+        return collect([strval($options) => $options]);
     }
 }

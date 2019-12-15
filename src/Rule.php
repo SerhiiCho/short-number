@@ -50,9 +50,7 @@ class Rule
      */
     private function countPercent(int $edge): int
     {
-        $round_option = $this->options->get('round');
-        $percent = is_null($round_option) ? self::DEFAULT_ROUND_EDGE : $round_option;
-
+        $percent = $this->options->contains('half') ? 50 : self::DEFAULT_ROUND_EDGE;
         return intval($edge * ($percent / 100));
     }
 
@@ -62,13 +60,7 @@ class Rule
      */
     public function formatNumber($number): string
     {
-        [$res,] = explode('.', strval($number / $this->divider));
-
-        if ($res === '0') {
-            $res = number_format($number / $this->divider);
-        }
-
-        return $res.$this->getSuffix();
+        return number_format($number / $this->divider).$this->getSuffix();
     }
 
     /**
