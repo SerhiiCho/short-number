@@ -20,6 +20,6 @@ class OptionTest extends TestCase
 
     public function Provider_for_option_lower_changes_suffix_case(): array
     {
-        return $this->generateDataForProvider(900, 899999, 10000, 1000);
+        return $this->generateDataForProvider(900, 899999, 10000);
     }
 }

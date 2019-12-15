@@ -42,7 +42,7 @@ class ConvTest extends TestCase
 
     public function Provider_for_returns_correct_number_between_899_and_899999(): array
     {
-        return $this->generateDataForProvider(900, 899999, 10000, 1000);
+        return $this->generateDataForProvider(900, 899999, 1000);
     }
 
     /**
@@ -59,7 +59,7 @@ class ConvTest extends TestCase
 
     public function Provider_for_returns_correct_number_between_899999_and_899999999(): array
     {
-        return $this->generateDataForProvider(900000, 899999999, 10000000, 1000000);
+        return $this->generateDataForProvider(900000, 899999999, 1000000);
     }
 
     /**
@@ -76,6 +76,6 @@ class ConvTest extends TestCase
 
     public function Provider_for_returns_correct_number_above_899999999(): array
     {
-        return $this->generateDataForProvider(900000000, 100000000000, 1000000000, 1000000000);
+        return $this->generateDataForProvider(900000000, 100000000000, 1000000000);
     }
 }
