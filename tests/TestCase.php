@@ -6,17 +6,17 @@ class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
      * @param int $from
-     * @param int $until
-     * @param int $divide
+     * @param int $to
      * @return array
      */
-    protected function generateDataForProvider(int $from, int $until, int $divide)
+    protected function generateDataForProvider(int $from, int $to)
     {
         $data = [];
-        $add = floor(($until - $from) / 100);
+        $add = floor(($to - $from) / 100);
+        $subtract = strlen(substr(strval($from), 0, -1));
 
-        for ($i = $from; $i < $until; $i += $add) {
-            $data[$i] = [$i, number_format(floatval($i / $divide))];
+        for ($i = $from; $i < $to; $i += $add) {
+            $data[$i] = [$i, substr((string) intval($i), 0, -$subtract)];
         }
 
         return $data;
