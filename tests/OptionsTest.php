@@ -5,7 +5,7 @@ namespace Tests;
 use PHPUnit\Framework\TestCase;
 use Serhii\ShortNumber\Conv;
 
-class OptionRoundTest extends TestCase
+class OptionsTest extends TestCase
 {
     /**
      * @dataProvider Provider_for_short_method_rounds_at_half_when_HALF_option_passed
@@ -34,6 +34,9 @@ class OptionRoundTest extends TestCase
             ['499', 499, 'half'],
             ['1K', 500, 'half'],
             ['1K', 501, 'half'],
+            ['1k', 501, ['half', 'lower']],
+            ['1k', 500, ['half', 'lower']],
+            ['1k', 501, ['half', 'lower']],
         ];
     }
 }

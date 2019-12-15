@@ -9,6 +9,8 @@ Shortens given number by taking digits and adding K, M, B or T after them. For e
 - [Options](https://github.com/SerhiiCho/short-number#options)
     - [Output to lowercase](https://github.com/SerhiiCho/short-number#output-to-lowercase)
     - [Round the number](https://github.com/SerhiiCho/short-number#round-the-number)
+    - [Multiple options](https://github.com/SerhiiCho/short-number#multiple-options)
+- [Get started](https://github.com/SerhiiCho/short-number#get-started)
 - [Contribute](https://github.com/SerhiiCho/short-number#contribute)
 
 ## Supported languages
@@ -60,6 +62,22 @@ use Serhii\ShortNumber\Conv;
 Conv::short(500, 'half'); // returns: 1K
 Conv::short(499, 'half'); // returns: 499
 Conv::short(500); // returns: 500
+```
+
+#### Multiple options
+
+For passing multiple options just use an array as the second argument to `short` method.
+
+```php
+use Serhii\ShortNumber\Conv;
+
+Conv::short(500, ['half', 'lower']); // returns: 1k
+```
+
+## Get started
+
+```bash
+it's still in development
 ```
 
 ## Contribute
