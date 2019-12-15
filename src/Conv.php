@@ -15,10 +15,10 @@ class Conv
      * return this number with 'мил.' after.
      *
      * @param int $num
-     * @param array|null $options
+     * @param array|string $options
      * @return string
      */
-    public static function short(int $num, ?array $options = []): string
+    public static function short(int $num, $options = []): string
     {
         Lang::includeTranslations();
 
