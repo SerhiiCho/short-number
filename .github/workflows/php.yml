@@ -1,4 +1,4 @@
-name: Ago
+name: Short number
 
 on:
   pull_request:
