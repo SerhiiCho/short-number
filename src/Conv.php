@@ -2,6 +2,8 @@
 
 namespace Serhii\ShortNumber;
 
+use Illuminate\Support\Collection;
+
 class Conv
 {
     /**
@@ -15,21 +17,21 @@ class Conv
      * return this number with 'мил.' after.
      *
      * @param int $num
-     * @param array|string $options
+     * @param array|string|null $options
      * @return string
      */
-    public static function short(int $num, $options = []): string
+    public static function short(int $num, $options = ''): string
     {
+        self::$options = self::formatOptions($options);
+
         Lang::includeTranslations();
 
-        self::$options = $options;
-
-        $rules = [
-            new Rule(900, 1),
-            new Rule(900000, 1000, 'thousand'),
-            new Rule(900000000, 1000000, 'million'),
-            new Rule(900000000000, 1000000000, 'billion'),
-        ];
+        $rules = collect([
+            new Rule(900, 1, '', self::$options),
+            new Rule(900000, 1000, 'thousand', self::$options),
+            new Rule(900000000, 1000000, 'million', self::$options),
+            new Rule(900000000000, 1000000000, 'billion', self::$options),
+        ]);
 
          foreach ($rules as $rule) {
              if ($num < $rule->edge) {
@@ -37,6 +39,24 @@ class Conv
              }
          }
 
-        return (new Rule(0, 1000000000000, 'trillion'))->formatNumber($num);
+        return $rules->last()->formatNumber($num);
+    }
+
+    /**
+     * Figures out what type of option is, and returns
+     * collection with passed options.
+     *
+     * @param string|array $options
+     * @return \Illuminate\Support\Collection
+     */
+    private static function formatOptions($options): Collection
+    {
+        if (is_array($options)) {
+            return collect($options)->map(function ($option) {
+                return new Option($option);
+            });
+        }
+
+        return collect([$options => true]);
     }
 }
