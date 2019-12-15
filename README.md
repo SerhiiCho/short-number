@@ -14,7 +14,7 @@ Shortens given number by taking digits and adding K, M, B or T after them. For e
 ```php
 use Serhii\ShortNumber\Conv;
 
-Conv::short(1909234); // returns: 2M
+Conv::short(1893234); // returns: 1M
 Conv::short(20234); // returns: 20K
 ```
 
