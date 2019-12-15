@@ -27,19 +27,20 @@ class Conv
         Lang::includeTranslations();
 
         $rules = collect([
-            new Rule(1000, 1, '', self::$options),
-            new Rule(1000000, 1000, 'thousand', self::$options),
-            new Rule(1000000000, 1000000, 'million', self::$options),
-            new Rule(1000000000000, 1000000000, 'billion', self::$options),
+            new Rule('', [0, 999], self::$options),
+            new Rule('thousand', [Rule::THOUSAND, Rule::MILLION - 1], self::$options),
+            new Rule('million', [Rule::MILLION, Rule::BILLION - 1], self::$options),
+            new Rule('billion', [Rule::BILLION, Rule::TRILLION - 1], self::$options),
+            new Rule('trillion', [Rule::TRILLION, Rule::QUADRILLION - 1], self::$options),
         ]);
 
-         foreach ($rules as $rule) {
-             if ($num < $rule->edge) {
-                 return $rule->formatNumber($num);
-             }
-         }
+        $needed_rule = $rules->filter(function ($rule) use ($num) {
+            return $rule->inRange($num);
+        });
 
-        return $rules->last()->formatNumber($num);
+        return $needed_rule->isNotEmpty()
+            ? $needed_rule->first()->formatNumber($num)
+            : $rules->last()->formatNumber($num);
     }
 
     /**

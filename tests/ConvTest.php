@@ -3,22 +3,23 @@
 namespace Tests;
 
 use Serhii\ShortNumber\Conv;
+use Serhii\ShortNumber\Rule;
 
 class ConvTest extends TestCase
 {
     /**
-     * @dataProvider Provider_for_returns_correct_number_between_0_and_899
+     * @dataProvider Provider_for_returns_correct_number_below_thousand
      * @test
      * @param int $number
      */
-    public function returns_correct_number_between_0_and_899(int $number): void
+    public function returns_correct_number_below_thousand(int $number): void
     {
         $this->assertEquals($number, Conv::short($number), "Failed on test #$number without option");
         $this->assertEquals($number, Conv::short($number, 'lower'), "Failed on test #$number with option 'lower'");
         $this->assertEquals($number, Conv::short($number, ['lower']), "Failed on test #$number with option ['lower']");
     }
 
-    public function Provider_for_returns_correct_number_between_0_and_899(): array
+    public function Provider_for_returns_correct_number_below_thousand(): array
     {
         $data = [];
 
@@ -30,12 +31,12 @@ class ConvTest extends TestCase
     }
 
     /**
-     * @dataProvider Provider_for_returns_correct_number_between_899_and_899999
+     * @dataProvider Provider_for_returns_correct_number_for_thousands
      * @test
      * @param int $num_before
      * @param int $num_after
      */
-    public function returns_correct_number_between_899_and_899999(int $num_before, int $num_after): void
+    public function returns_correct_number_for_thousands(int $num_before, int $num_after): void
     {
         $msg = "Failed on test #$num_before without option";
         $this->assertEquals("{$num_after}K", Conv::short($num_before), $msg);
@@ -47,18 +48,18 @@ class ConvTest extends TestCase
         $this->assertEquals("{$num_after}k", Conv::short($num_before, ['lower']), $msg);
     }
 
-    public function Provider_for_returns_correct_number_between_899_and_899999(): array
+    public function Provider_for_returns_correct_number_for_thousands(): array
     {
-        return $this->generateDataForProvider(900, 899999, 1000);
+        return $this->generateDataForProvider(Rule::THOUSAND, Rule::MILLION - 1);
     }
 
     /**
-     * @dataProvider Provider_for_returns_correct_number_between_899999_and_899999999
+     * @dataProvider Provider_for_returns_correct_number_for_millions
      * @test
      * @param int $num_before
      * @param int $num_after
      */
-    public function returns_correct_number_between_899999_and_899999999(int $num_before, int $num_after): void
+    public function returns_correct_number_for_millions(int $num_before, int $num_after): void
     {
         $msg = "Failed on test #$num_before without option";
         $this->assertEquals("{$num_after}M", Conv::short($num_before), $msg);
@@ -70,18 +71,18 @@ class ConvTest extends TestCase
         $this->assertEquals("{$num_after}m", Conv::short($num_before, ['lower']), $msg);
     }
 
-    public function Provider_for_returns_correct_number_between_899999_and_899999999(): array
+    public function Provider_for_returns_correct_number_for_millions(): array
     {
-        return $this->generateDataForProvider(900000, 899999999, 1000000);
+        return $this->generateDataForProvider(Rule::MILLION, Rule::BILLION - 1);
     }
 
     /**
-     * @dataProvider Provider_for_returns_correct_number_above_899999999
+     * @dataProvider Provider_for_returns_correct_number_for_billions
      * @test
      * @param int $num_before
      * @param int $num_after
      */
-    public function returns_correct_number_above_899999999(int $num_before, int $num_after): void
+    public function returns_correct_number_for_billions(int $num_before, int $num_after): void
     {
         $msg = "Failed on test #$num_before without option";
         $this->assertEquals("{$num_after}B", Conv::short($num_before), $msg);
@@ -93,8 +94,31 @@ class ConvTest extends TestCase
         $this->assertEquals("{$num_after}b", Conv::short($num_before, ['lower']), $msg);
     }
 
-    public function Provider_for_returns_correct_number_above_899999999(): array
+    public function Provider_for_returns_correct_number_for_billions(): array
     {
-        return $this->generateDataForProvider(900000000, 100000000000, 1000000000);
+        return $this->generateDataForProvider(Rule::BILLION, Rule::TRILLION - 1);
+    }
+
+    /**
+     * @dataProvider Provider_for_returns_correct_number_for_trillions
+     * @test
+     * @param int $num_before
+     * @param int $num_after
+     */
+    public function returns_correct_number_for_trillions(int $num_before, int $num_after): void
+    {
+        $msg = "Failed on test #$num_before without option";
+        $this->assertEquals("{$num_after}T", Conv::short($num_before), $msg);
+
+        $msg = "Failed on test #$num_before with option 'lower'";
+        $this->assertEquals("{$num_after}t", Conv::short($num_before, 'lower'), $msg);
+
+        $msg = "Failed on test #$num_before with option ['lower']";
+        $this->assertEquals("{$num_after}t", Conv::short($num_before, ['lower']), $msg);
+    }
+
+    public function Provider_for_returns_correct_number_for_trillions(): array
+    {
+        return $this->generateDataForProvider(Rule::TRILLION, Rule::QUADRILLION - 1);
     }
 }

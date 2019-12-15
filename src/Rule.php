@@ -6,22 +6,16 @@ use Illuminate\Support\Collection;
 
 class Rule
 {
-    const DEFAULT_ROUND_EDGE = 90;
-
-    /**
-     * @var int
-     */
-    public $edge;
-
-    /**
-     * @var int
-     */
-    private $divider;
+    const THOUSAND = 1000;
+    const MILLION = 1000000;
+    const BILLION = 1000000000;
+    const TRILLION = 1000000000000;
+    const QUADRILLION = 1000000000000000;
 
     /**
      * @var string|null
      */
-    private $translate_key;
+    private $number_name;
 
     /**
      * @var \Illuminate\Support\Collection
@@ -29,38 +23,49 @@ class Rule
     private $options;
 
     /**
+     * @var array
+     */
+    private $range;
+
+    /**
      * Rule constructor.
      *
-     * @param int $edge
-     * @param int $divider
-     * @param string $translate_key
+     * @param string $number_name
+     * @param array $range
      * @param \Illuminate\Support\Collection $options
      */
-    public function __construct(int $edge, int $divider, string $translate_key, Collection $options)
+    public function __construct(string $number_name, array $range, Collection $options)
     {
         $this->options = $options;
-        $this->divider = $divider;
-        $this->translate_key = $translate_key;
-        $this->edge = $this->countPercent($edge);
+        $this->number_name = $number_name;
+        $this->range = $range;
     }
 
     /**
-     * @param int $edge
-     * @return int
-     */
-    private function countPercent(int $edge): int
-    {
-        $percent = $this->options->contains('half') ? 50 : self::DEFAULT_ROUND_EDGE;
-        return intval($edge * ($percent / 100));
-    }
-
-    /**
-     * @param $number
+     * @param $num
      * @return string
      */
-    public function formatNumber($number): string
+    public function formatNumber($num): string
     {
-        return number_format($number / $this->divider).$this->getSuffix();
+        $num = strval($num);
+
+        if ($num < 1000) {
+            return $num.$this->getSuffix();
+        }
+
+        $short_num = explode(',', number_format(floatval($num)))[0];
+
+//        if ($num === '100899999999990') {
+//            dd($short_num);
+//        }
+
+        return $short_num.$this->getSuffix();
+    }
+
+    public function inRange(int $num): bool
+    {
+        [$min, $max] = $this->range;
+        return $num >= $min && $num <= $max;
     }
 
     /**
@@ -68,14 +73,14 @@ class Rule
      */
     private function getSuffix(): string
     {
-        if (!$this->translate_key) {
+        if (!$this->number_name) {
             return '';
         }
 
         if ($this->options->contains('lower')) {
-            return strtolower(Lang::trans($this->translate_key));
+            return strtolower(Lang::trans($this->number_name));
         }
 
-        return Lang::trans($this->translate_key);
+        return Lang::trans($this->number_name);
     }
 }
