@@ -49,19 +49,18 @@ Conv::short(1352, 'lower'); // returns: 1k
 
 #### Round the number
 
-> If number is at 90% or above to the next digit, it will round it. For example **1899** will be converted to **1K**, but **1900** to **2K**. To change the percent use option `round n`, where **n** is percent for round edge.
+> If number is at 90% or above to the next digit, it will round it. For example **1899** will be converted to **1K**, but **1900** to **2K**. To change the percent use option `round n`, where **n** is percent for round edge. 
+>
+>**You can set values from 50 to 100**.  Values below 50 will be set to 50, and values higher than 100 will be set to 100.
 
 ```php
 use Serhii\ShortNumber\Conv;
 
-Conv::short(1009, 'round 1'); // returns: 1K
-Conv::short(1010, 'round 1'); // returns: 2K
+Conv::short(499, 'round 50'); // returns: 499
+Conv::short(500, 'round 50'); // returns: 1K
 
-Conv::short(1499, 'round 50'); // returns: 1K
-Conv::short(1500, 'round 50'); // returns: 2K
-
-Conv::short(1999, 'round 100'); // returns: 1K
-Conv::short(2000, 'round 100'); // returns: 2K
+Conv::short(999, 'round 100'); // returns: 999
+Conv::short(1000, 'round 100'); // returns: 1K
 ```
 
 ## Contribute
