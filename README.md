@@ -1,6 +1,6 @@
 <h2 align="center">Short number</h2>
 
-Light package that shortens given number by taking digits and adding K, M, B or T after them. For example **1234** will be formatted to **1K** and **20244023** to **20M**. Package supports multiple languages, the default is English.
+Shortens given number by taking digits and adding K, M, B or T after them. For example **1234** will be formatted to **1K** and **20244023** to **20M**. Package supports multiple languages, the default is English.
 
 - [Supported languages](https://github.com/SerhiiCho/short-number#supported-languages)
 - [Usage](https://github.com/SerhiiCho/short-number#usage)
