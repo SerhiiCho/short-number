@@ -1,6 +1,6 @@
 {
     "name": "serhii/short-number",
-    "description": "Light package that shortens given number by taking digits and adding K, M, B or T after them",
+    "description": "For changing the language you want to call `set` method once before calling other methods from this package.",
     "homepage": "https://github.com/SerhiiCho/short-number",
     "keywords": ["format number", "shorten number", "library"],
     "type": "library",
