@@ -16,13 +16,14 @@ class Conv
      * function returns this number with "тыс." after number, if its bigger it will
      * return this number with 'мил.' after.
      *
-     * @param int $num
+     * @param int|float $num
      * @param array|string|null $options
      * @return string
      */
-    public static function short(int $num, $options = ''): string
+    public static function short($num, $options = ''): string
     {
         self::$options = self::formatOptions($options);
+        $num = intval($num);
 
         Lang::includeTranslations();
 
