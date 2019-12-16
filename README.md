@@ -44,7 +44,7 @@ Conv::short(1352, 'lower'); // returns: 1k
 ## Get started
 
 ```bash
-it's still in development
+composer require serhii/short-number
 ```
 
 ## Contribute
