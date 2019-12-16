@@ -26,37 +26,37 @@ class Conv
 
         Lang::includeTranslations();
 
-        $rules = collect([
+        $rules = [
             new Rule('', [0, 999], self::$options),
             new Rule('thousand', [Rule::THOUSAND, Rule::MILLION - 1], self::$options),
             new Rule('million', [Rule::MILLION, Rule::BILLION - 1], self::$options),
             new Rule('billion', [Rule::BILLION, Rule::TRILLION - 1], self::$options),
             new Rule('trillion', [Rule::TRILLION, Rule::QUADRILLION - 1], self::$options),
-        ]);
+        ];
 
-        $needed_rule = $rules->filter(function ($rule) use ($num) {
+        $needed_rule = array_filter($rules, function ($rule) use ($num) {
             return $rule->inRange($num);
         });
 
-        return $needed_rule->isNotEmpty()
-            ? $needed_rule->first()->formatNumber($num)
-            : $rules->last()->formatNumber($num);
+        return !empty($needed_rule)
+            ? current($needed_rule)->formatNumber($num)
+            : end($rules)->formatNumber($num);
     }
 
     /**
      * Formats dynamic options like 'round 30' etc...
      *
      * @param array|string $options
-     * @return \Illuminate\Support\Collection
+     * @return array
      */
-    private static function formatOptions($options): Collection
+    private static function formatOptions($options): array
     {
         if (is_array($options)) {
-            return collect(array_flip($options))->map(function ($_, $key) {
+            return array_map(function ($_, $key) {
                 return $key;
-            });
+            }, array_flip($options), array_keys($options));
         }
 
-        return collect([strval($options) => $options]);
+        return [strval($options) => $options];
     }
 }

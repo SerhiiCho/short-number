@@ -18,7 +18,7 @@ class Rule
     private $number_name;
 
     /**
-     * @var \Illuminate\Support\Collection
+     * @var array
      */
     private $options;
 
@@ -32,9 +32,9 @@ class Rule
      *
      * @param string $number_name
      * @param array $range
-     * @param \Illuminate\Support\Collection $options
+     * @param array $options
      */
-    public function __construct(string $number_name, array $range, Collection $options)
+    public function __construct(string $number_name, array $range, array $options)
     {
         $this->options = $options;
         $this->number_name = $number_name;
@@ -80,7 +80,7 @@ class Rule
             return '';
         }
 
-        if ($this->options->contains('lower')) {
+        if (in_array('lower', $this->options)) {
             return strtolower(Lang::trans($this->number_name));
         }
 
