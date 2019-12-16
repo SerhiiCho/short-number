@@ -58,6 +58,13 @@ class Rule
         return $short_num.$this->getSuffix();
     }
 
+    /**
+     * Check if given value is in number range, for example
+     * thousand must be in range 1000 - 999_999
+     *
+     * @param int $num
+     * @return bool
+     */
     public function inRange(int $num): bool
     {
         [$min, $max] = $this->range;
