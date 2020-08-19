@@ -17,6 +17,8 @@ Lightweight package that shortens given number by taking digits and adding K, M,
 
 ## Usage
 
+[Example usage on repl.it](https://repl.it/@SerhiiCho/Usage-of-short-number-package)
+
 ```php
 use Serhii\ShortNumber\Conv;
 
