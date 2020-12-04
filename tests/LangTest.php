@@ -8,6 +8,7 @@ use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
 use Serhii\ShortNumber\Conv;
 use Serhii\ShortNumber\Lang;
+use Serhii\ShortNumber\Option;
 use Serhii\ShortNumber\Rule;
 
 class LangTest extends TestCase
@@ -19,8 +20,8 @@ class LangTest extends TestCase
         $reflect->setAccessible(true);
         $output = $reflect->invoke(new Lang);
 
-        $this->assertTrue(in_array('ru', $output));
-        $this->assertTrue(in_array('en', $output));
+        $this->assertContains('ru', $output);
+        $this->assertContains('en', $output);
     }
 
     /**
@@ -34,8 +35,8 @@ class LangTest extends TestCase
     {
         Lang::set($lang);
         $this->assertEquals($expect, Conv::short($input));
-        $this->assertEquals(strtolower($expect), Conv::short($input, 'lower'));
-        $this->assertEquals(strtolower($expect), Conv::short($input, ['lower']));
+        $this->assertEquals(strtolower($expect), Conv::short($input, Option::LOWER));
+        $this->assertEquals(strtolower($expect), Conv::short($input, [Option::LOWER]));
     }
 
     public function Provider_for_sets_method_sets_russian_the_current_language_for_converter(): array

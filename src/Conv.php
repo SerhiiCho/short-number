@@ -13,16 +13,17 @@ class Conv
 
     /**
      * Takes number and looks at it, if this number is between 1 thousand and 1 million
-     * function returns this number with "тыс." after number, if its bigger it will
-     * return this number with 'мил.' after.
+     * function returns this number with "K" after number, if its bigger it will
+     * return this number with 'M' after.
      *
      * @param int|float $num
-     * @param array|string|null $options
+     * @param int[]|int|null $options
      * @return string
      */
-    public static function short($num, $options = ''): string
+    public static function short($num, $options = []): string
     {
-        self::$options = self::formatOptions($options);
+        self::$options = \is_array($options) ? $options : [$options];
+
         $num = (int) $num;
 
         Lang::includeTranslations();
@@ -42,22 +43,5 @@ class Conv
         return !empty($needed_rule)
             ? \current($needed_rule)->formatNumber($num)
             : \end($rules)->formatNumber($num);
-    }
-
-    /**
-     * Formats dynamic options like 'round 30' etc...
-     *
-     * @param array|string $options
-     * @return array
-     */
-    private static function formatOptions($options): array
-    {
-        if (\is_array($options)) {
-            return \array_map(static function ($_, $key) {
-                return $key;
-            }, \array_flip($options), \array_keys($options));
-        }
-
-        return [(string) $options => $options];
     }
 }

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Serhii\Tests;
 
 use Serhii\ShortNumber\Conv;
+use Serhii\ShortNumber\Option;
 use Serhii\ShortNumber\Rule;
 
 class ConvTest extends TestCase
@@ -17,8 +18,8 @@ class ConvTest extends TestCase
     public function returns_correct_number_below_thousand(int $number): void
     {
         $this->assertEquals($number, Conv::short($number), "Failed on test #$number without option");
-        $this->assertEquals($number, Conv::short($number, 'lower'), "Failed on test #$number with option 'lower'");
-        $this->assertEquals($number, Conv::short($number, ['lower']), "Failed on test #$number with option ['lower']");
+        $this->assertEquals($number, Conv::short($number, Option::LOWER), "Failed on test #$number with option Option::LOWER");
+        $this->assertEquals($number, Conv::short($number, [Option::LOWER]), "Failed on test #$number with option [Option::LOWER]");
     }
 
     public function Provider_for_returns_correct_number_below_thousand(): array
@@ -43,11 +44,11 @@ class ConvTest extends TestCase
         $msg = "Failed on test #$num_before without option";
         $this->assertEquals("{$num_after}K", Conv::short($num_before), $msg);
 
-        $msg = "Failed on test #$num_before with option 'lower'";
-        $this->assertEquals("{$num_after}k", Conv::short($num_before, 'lower'), $msg);
+        $msg = "Failed on test #$num_before with option Option::LOWER";
+        $this->assertEquals("{$num_after}k", Conv::short($num_before, Option::LOWER), $msg);
 
-        $msg = "Failed on test #$num_before with option ['lower']";
-        $this->assertEquals("{$num_after}k", Conv::short($num_before, ['lower']), $msg);
+        $msg = "Failed on test #$num_before with option [Option::LOWER]";
+        $this->assertEquals("{$num_after}k", Conv::short($num_before, [Option::LOWER]), $msg);
     }
 
     public function Provider_for_returns_correct_number_for_thousands(): array
@@ -66,11 +67,11 @@ class ConvTest extends TestCase
         $msg = "Failed on test #$num_before without option";
         $this->assertEquals("{$num_after}M", Conv::short($num_before), $msg);
 
-        $msg = "Failed on test #$num_before with option 'lower'";
-        $this->assertEquals("{$num_after}m", Conv::short($num_before, 'lower'), $msg);
+        $msg = "Failed on test #$num_before with option Option::LOWER";
+        $this->assertEquals("{$num_after}m", Conv::short($num_before, Option::LOWER), $msg);
 
-        $msg = "Failed on test #$num_before with option ['lower']";
-        $this->assertEquals("{$num_after}m", Conv::short($num_before, ['lower']), $msg);
+        $msg = "Failed on test #$num_before with option [Option::LOWER]";
+        $this->assertEquals("{$num_after}m", Conv::short($num_before, [Option::LOWER]), $msg);
     }
 
     public function Provider_for_returns_correct_number_for_millions(): array
@@ -89,11 +90,11 @@ class ConvTest extends TestCase
         $msg = "Failed on test #$num_before without option";
         $this->assertEquals("{$num_after}B", Conv::short($num_before), $msg);
 
-        $msg = "Failed on test #$num_before with option 'lower'";
-        $this->assertEquals("{$num_after}b", Conv::short($num_before, 'lower'), $msg);
+        $msg = "Failed on test #$num_before with option Option::LOWER";
+        $this->assertEquals("{$num_after}b", Conv::short($num_before, Option::LOWER), $msg);
 
-        $msg = "Failed on test #$num_before with option ['lower']";
-        $this->assertEquals("{$num_after}b", Conv::short($num_before, ['lower']), $msg);
+        $msg = "Failed on test #$num_before with option [Option::LOWER]";
+        $this->assertEquals("{$num_after}b", Conv::short($num_before, [Option::LOWER]), $msg);
     }
 
     public function Provider_for_returns_correct_number_for_billions(): array
@@ -112,11 +113,11 @@ class ConvTest extends TestCase
         $msg = "Failed on test #$num_before without option";
         $this->assertEquals("{$num_after}T", Conv::short($num_before), $msg);
 
-        $msg = "Failed on test #$num_before with option 'lower'";
-        $this->assertEquals("{$num_after}t", Conv::short($num_before, 'lower'), $msg);
+        $msg = "Failed on test #$num_before with option Option::LOWER";
+        $this->assertEquals("{$num_after}t", Conv::short($num_before, Option::LOWER), $msg);
 
-        $msg = "Failed on test #$num_before with option ['lower']";
-        $this->assertEquals("{$num_after}t", Conv::short($num_before, ['lower']), $msg);
+        $msg = "Failed on test #$num_before with option [Option::LOWER]";
+        $this->assertEquals("{$num_after}t", Conv::short($num_before, [Option::LOWER]), $msg);
     }
 
     public function Provider_for_returns_correct_number_for_trillions(): array

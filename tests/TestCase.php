@@ -15,10 +15,10 @@ class TestCase extends \PHPUnit\Framework\TestCase
     {
         $data = [];
         $add = floor(($to - $from) / 100);
-        $subtract = strlen(substr(strval($from), 0, -1));
+        $subtract = strlen(substr((string) $from, 0, -1));
 
         for ($i = $from; $i < $to; $i += $add) {
-            $data[$i] = [$i, substr((string) intval($i), 0, -$subtract)];
+            $data[$i] = [$i, substr((string) (int) $i, 0, -$subtract)];
         }
 
         return $data;

@@ -40,13 +40,14 @@ Serhii\ShortNumber\Lang::set('ru');
 
 #### Output to lowercase
 
-By default uppercase is set, to make it lower just pass `lower` as the seconds argument to a `short` method.
+By default, conv() method is returning uppercase result, to make it lowercase just pass `Option::LOWER` as the second argument to a `conv()` method.
 
 ```php
+use Serhii\ShortNumber\Option;
 use Serhii\ShortNumber\Conv;
 
 Conv::short(1352); // returns: 1K
-Conv::short(1352, 'lower'); // returns: 1k
+Conv::short(1352, Option::LOWER); // returns: 1k
 ```
 
 ## Get started
