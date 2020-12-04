@@ -9,13 +9,14 @@
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5",
-        "symfony/var-dumper": "^5.1@dev"
+        "symfony/var-dumper": "^4.2"
     },
     "license": "MIT",
     "authors": [
         {
             "name": "SerhiiCho",
-            "email": "serhiicho@protonmail.com"
+            "email": "serhiicho@protonmail.com",
+            "homepage": "https://serhii.io"
         }
     ],
     "autoload": {
