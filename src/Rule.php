@@ -81,7 +81,7 @@ class Rule
         }
 
         if (\in_array(Option::LOWER, $this->options, true)) {
-            return \strtolower(Lang::trans($this->number_name));
+            return \mb_strtolower(Lang::trans($this->number_name));
         }
 
         return Lang::trans($this->number_name);
