@@ -9,7 +9,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
      * @param int $to
      * @return array
      */
-    protected function generateDataForProvider(int $from, int $to)
+    protected function generateDataForProvider(int $from, int $to): array
     {
         $data = [];
         $add = floor(($to - $from) / 100);

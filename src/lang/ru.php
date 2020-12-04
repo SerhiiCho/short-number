@@ -1,9 +1,6 @@
-<?php declare(strict_types=1);
+<?php
 
-/**
- * Language: Russian
- * Author: Serhii Cho
- */
+declare(strict_types=1);
 
 return [
 

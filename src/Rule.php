@@ -6,11 +6,11 @@ use Illuminate\Support\Collection;
 
 class Rule
 {
-    const THOUSAND = 1000;
-    const MILLION = 1000000;
-    const BILLION = 1000000000;
-    const TRILLION = 1000000000000;
-    const QUADRILLION = 1000000000000000;
+    public const THOUSAND = 1000;
+    public const MILLION = 1000000;
+    public const BILLION = 1000000000;
+    public const TRILLION = 1000000000000;
+    public const QUADRILLION = 1000000000000000;
 
     /**
      * @var string|null
@@ -42,18 +42,18 @@ class Rule
     }
 
     /**
-     * @param $num
+     * @param mixed $num
      * @return string
      */
     public function formatNumber($num): string
     {
-        $num = strval($num);
+        $num = (string) $num;
 
         if ($num < 1000) {
             return $num.$this->getSuffix();
         }
 
-        $short_num = explode(',', number_format(floatval($num)))[0];
+        $short_num = \explode(',', \number_format((float) $num))[0];
 
         return $short_num.$this->getSuffix();
     }
@@ -80,8 +80,8 @@ class Rule
             return '';
         }
 
-        if (in_array('lower', $this->options)) {
-            return strtolower(Lang::trans($this->number_name));
+        if (\in_array('lower', $this->options)) {
+            return \strtolower(Lang::trans($this->number_name));
         }
 
         return Lang::trans($this->number_name);

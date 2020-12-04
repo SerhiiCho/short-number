@@ -2,8 +2,6 @@
 
 namespace Serhii\ShortNumber;
 
-use Illuminate\Support\Collection;
-
 class Conv
 {
     /**
@@ -23,7 +21,7 @@ class Conv
     public static function short($num, $options = ''): string
     {
         self::$options = self::formatOptions($options);
-        $num = intval($num);
+        $num = (int) $num;
 
         Lang::includeTranslations();
 
@@ -35,13 +33,13 @@ class Conv
             new Rule('trillion', [Rule::TRILLION, Rule::QUADRILLION - 1], self::$options),
         ];
 
-        $needed_rule = array_filter($rules, function ($rule) use ($num) {
+        $needed_rule = \array_filter($rules, static function ($rule) use ($num) {
             return $rule->inRange($num);
         });
 
         return !empty($needed_rule)
-            ? current($needed_rule)->formatNumber($num)
-            : end($rules)->formatNumber($num);
+            ? \current($needed_rule)->formatNumber($num)
+            : \end($rules)->formatNumber($num);
     }
 
     /**
@@ -52,12 +50,12 @@ class Conv
      */
     private static function formatOptions($options): array
     {
-        if (is_array($options)) {
-            return array_map(function ($_, $key) {
+        if (\is_array($options)) {
+            return \array_map(static function ($_, $key) {
                 return $key;
-            }, array_flip($options), array_keys($options));
+            }, \array_flip($options), \array_keys($options));
         }
 
-        return [strval($options) => $options];
+        return [(string) $options => $options];
     }
 }

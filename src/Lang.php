@@ -30,7 +30,7 @@ class Lang
      */
     public static function set(string $lang): void
     {
-        self::$lang = in_array($lang, self::availableLanguages()) ? $lang : 'en';
+        self::$lang = \in_array($lang, self::availableLanguages(), true) ? $lang : 'en';
     }
 
     /**
@@ -40,10 +40,10 @@ class Lang
      */
     private static function availableLanguages(): array
     {
-        $file_paths = glob(__DIR__.'/lang/*.php');
+        $file_paths = \glob(__DIR__.'/lang/*.php');
 
-        return array_map(function ($path) {
-            preg_match('!/([a-z]+).php!', $path, $lang);
+        return \array_map(static function ($path) {
+            \preg_match('!/([a-z]+).php!', $path, $lang);
             return $lang[1];
         }, $file_paths);
     }
