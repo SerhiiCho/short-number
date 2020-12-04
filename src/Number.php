@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Serhii\ShortNumber;
 
-class Conv
+class Number
 {
     /**
      * @var array|null
@@ -20,7 +20,7 @@ class Conv
      * @param int[]|int|null $options
      * @return string
      */
-    public static function short($num, $options = []): string
+    public static function conv($num, $options = []): string
     {
         self::$options = \is_array($options) ? $options : [$options];
 

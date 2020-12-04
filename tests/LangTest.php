@@ -6,8 +6,8 @@ namespace Serhii\Tests;
 
 use PHPUnit\Framework\TestCase;
 use ReflectionMethod;
-use Serhii\ShortNumber\Conv;
 use Serhii\ShortNumber\Lang;
+use Serhii\ShortNumber\Number;
 use Serhii\ShortNumber\Option;
 use Serhii\ShortNumber\Rule;
 
@@ -34,9 +34,9 @@ class LangTest extends TestCase
     public function sets_method_sets_current_language_for_converter(string $expect, string $lang, int $input): void
     {
         Lang::set($lang);
-        $this->assertEquals($expect, Conv::short($input));
-        $this->assertEquals(strtolower($expect), Conv::short($input, Option::LOWER));
-        $this->assertEquals(strtolower($expect), Conv::short($input, [Option::LOWER]));
+        $this->assertEquals($expect, Number::conv($input));
+        $this->assertEquals(mb_strtolower($expect), Number::conv($input, Option::LOWER));
+        $this->assertEquals(mb_strtolower($expect), Number::conv($input, [Option::LOWER]));
     }
 
     public function Provider_for_sets_method_sets_russian_the_current_language_for_converter(): array

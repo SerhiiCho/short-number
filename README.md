@@ -20,10 +20,10 @@ Lightweight package that shortens given number by taking digits and adding K, M,
 [Example usage on repl.it](https://repl.it/@SerhiiCho/Usage-of-short-number-package)
 
 ```php
-use Serhii\ShortNumber\Conv;
+use Serhii\ShortNumber\Number;
 
-Conv::short(1893234); // returns: 1M
-Conv::short(20234); // returns: 20K
+Number::conv(1893234); // returns: 1M
+Number::conv(20234); // returns: 20K
 ```
 
 ## Configurations
@@ -44,10 +44,10 @@ By default, conv() method is returning uppercase result, to make it lowercase ju
 
 ```php
 use Serhii\ShortNumber\Option;
-use Serhii\ShortNumber\Conv;
+use Serhii\ShortNumber\Number;
 
-Conv::short(1352); // returns: 1K
-Conv::short(1352, Option::LOWER); // returns: 1k
+Number::conv(1352); // returns: 1K
+Number::conv(1352, Option::LOWER); // returns: 1k
 ```
 
 ## Get started
