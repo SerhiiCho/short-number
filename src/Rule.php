@@ -49,7 +49,7 @@ class Rule
     {
         $num = (string) $num;
 
-        if ($num < 1000) {
+        if ($num < self::THOUSAND) {
             return $num.$this->getSuffix();
         }
 
