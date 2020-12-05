@@ -16,5 +16,12 @@ return [
         'billion' => 'млд',
         'trillion' => 'трн',
     ],
+    // Ukrainian
+    'uk' => [
+        'thousand' => 'тис',
+        'million' => 'млн',
+        'billion' => 'млд',
+        'trillion' => 'трн',
+    ],
 
 ];
