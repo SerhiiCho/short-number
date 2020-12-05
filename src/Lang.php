@@ -25,9 +25,9 @@ class Lang
      * If you don't call this method, the default
      * language will be also English.
      *
-     * @param string $lang Can be 'ru' or 'en' or other languages
-     * that are supported by this package. All supported languages
-     * you can find on Github page.
+     * @param string $lang Can be 'ru' or 'en' for example.
+     * Or any other language that is supported by this package.
+     *
      * @see https://github.com/SerhiiCho/short-number
      */
     public static function set(string $lang): void
@@ -42,12 +42,7 @@ class Lang
      */
     private static function availableLanguages(): array
     {
-        $file_paths = \glob(__DIR__.'/lang/*.php');
-
-        return \array_map(static function ($path) {
-            \preg_match('!/([a-z]+).php!', $path, $lang);
-            return $lang[1];
-        }, $file_paths);
+        return self::$translations ? array_keys(self::$translations) : [];
     }
 
     /**
@@ -57,17 +52,11 @@ class Lang
      */
     public static function trans(string $index): ?string
     {
-        return self::$translations[$index] ?? null;
+        return self::$translations[self::$lang][$index] ?? null;
     }
 
-    /**
-     * Includes array of translations from lang directory
-     * into the $translations variable.
-     */
     public static function includeTranslations(): void
     {
-        self::$translations = self::$lang === 'ru'
-            ? require __DIR__.'/lang/ru.php'
-            : require __DIR__.'/lang/en.php';
+        self::$translations = require __DIR__ . '/../resources/translation.php';
     }
 }

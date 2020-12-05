@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Serhii\Tests;
 
 use PHPUnit\Framework\TestCase;
-use ReflectionMethod;
 use Serhii\ShortNumber\Lang;
 use Serhii\ShortNumber\Number;
 use Serhii\ShortNumber\Option;
@@ -13,17 +12,6 @@ use Serhii\ShortNumber\Rule;
 
 class NumberTest extends TestCase
 {
-    /** @test */
-    public function availableLanguages_returns_array_of_file_names_in_lang_directory(): void
-    {
-        $reflect = new ReflectionMethod(Lang::class, 'availableLanguages');
-        $reflect->setAccessible(true);
-        $output = $reflect->invoke(new Lang());
-
-        $this->assertContains('ru', $output);
-        $this->assertContains('en', $output);
-    }
-
     /**
      * @dataProvider provider_for_sets_method_sets_russian_the_current_language_for_converter
      * @test
