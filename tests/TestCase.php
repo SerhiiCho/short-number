@@ -47,7 +47,7 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $subtract = mb_strlen(mb_substr((string) $from, 0, -1));
 
         for ($i = $from; $i < $to; $i += $add) {
-            if ($i >= 0 && $i < 1000) {
+            if ($i >= 0 && $i < Rule::THOUSAND) {
                 $data[] = ['input' => $i, 'expect' => (string) $i];
             } else {
                 $data[] = [
