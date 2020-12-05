@@ -1,5 +1,6 @@
 # Contribute language support
 
+Here is the [commit](https://github.com/SerhiiCho/short-number/commit/7edbbf502654aa6e3bf4e1f160c5ff219144a722) that added support for Ukrainian language.
 Contribute another language is very simple. You need to make 3 steps:
  
 ### 1. Translations
