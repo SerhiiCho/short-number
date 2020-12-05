@@ -33,7 +33,7 @@ class Number
         self::$number_is_negative = $number < 0;
 
         if (self::$number_is_negative) {
-            $number = (int)\abs($number);
+            $number = (int) \abs($number);
         }
 
         Lang::includeTranslations();
