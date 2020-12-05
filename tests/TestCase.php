@@ -43,16 +43,16 @@ class TestCase extends \PHPUnit\Framework\TestCase
     protected function generateDataForProvider(int $from, int $to): array
     {
         $data = [];
-        $add = floor(($to - $from) / 100);
+        $add = (int) floor(($to - $from) / 100);
         $subtract = mb_strlen(mb_substr((string) $from, 0, -1));
 
         for ($i = $from; $i < $to; $i += $add) {
             if ($i >= 0 && $i < 1000) {
-                $data[] = ['input' => $i, 'expect' => (string) (int) $i];
+                $data[] = ['input' => $i, 'expect' => (string) $i];
             } else {
                 $data[] = [
                     'input' => $i,
-                    'expect' => mb_substr((string) (int) $i, 0, -$subtract),
+                    'expect' => mb_substr((string) $i, 0, -$subtract),
                 ];
             }
         }

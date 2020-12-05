@@ -9,17 +9,20 @@ class Number
     /**
      * @var array|null
      */
-    private static $options;
+    private $options;
 
     /**
-     * @var bool
+     * @var \Serhii\ShortNumber\Number|null
      */
-    private static $number_is_negative = false;
+    private static $instance;
+
+    public static function singleton(): self
+    {
+        return static::$instance ?? (static::$instance = new static());
+    }
 
     /**
-     * Takes number and looks at it, if this number is between 1 thousand and 1 million
-     * function returns this number with "K" after number, if its bigger it will
-     * return this number with 'M' after.
+     * Converts given number to its short form.
      *
      * @param int $number
      * @param int[]|int|null $options
@@ -28,22 +31,34 @@ class Number
      */
     public static function conv(int $number, $options = []): string
     {
-        self::$options = \is_array($options) ? $options : [$options];
+        return self::singleton()->process($number, \is_array($options) ? $options : [$options]);
+    }
 
-        self::$number_is_negative = $number < 0;
-
-        if (self::$number_is_negative) {
-            $number = (int) \abs($number);
-        }
+    /**
+     * Converts given number to its short form.
+     *
+     * @param int $number
+     * @param int[]|array $options
+     *
+     * @return string
+     */
+    private function process(int $number, array $options): string
+    {
+        $this->options = $options;
+        $number_is_negative = $number < 0;
 
         Lang::includeTranslations();
 
+        if ($number_is_negative) {
+            $number = (int) \abs($number);
+        }
+
         $rules = [
-            new Rule('', [0, 999], self::$options),
-            new Rule('thousand', [Rule::THOUSAND, Rule::MILLION - 1], self::$options),
-            new Rule('million', [Rule::MILLION, Rule::BILLION - 1], self::$options),
-            new Rule('billion', [Rule::BILLION, Rule::TRILLION - 1], self::$options),
-            new Rule('trillion', [Rule::TRILLION, Rule::QUADRILLION - 1], self::$options),
+            new Rule('', [0, 999], $this->options),
+            new Rule('thousand', [Rule::THOUSAND, Rule::MILLION - 1], $this->options),
+            new Rule('million', [Rule::MILLION, Rule::BILLION - 1], $this->options),
+            new Rule('billion', [Rule::BILLION, Rule::TRILLION - 1], $this->options),
+            new Rule('trillion', [Rule::TRILLION, Rule::QUADRILLION - 1], $this->options),
         ];
 
         $needed_rule = \array_filter($rules, static function ($rule) use ($number) {
@@ -54,6 +69,6 @@ class Number
             ? \current($needed_rule)->formatNumber($number)
             : \end($rules)->formatNumber($number);
 
-        return self::$number_is_negative ? "-$result" : $result;
+        return $number_is_negative ? "-$result" : $result;
     }
 }
