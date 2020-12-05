@@ -36,10 +36,10 @@ Serhii\ShortNumber\Lang::set('en', [
 
 ## Supported languages
 
-| Language              | Short  | Thousand  | Million    | Billion  | Trillion  |
-|:----------------------|:-------|:----------|:-----------|:---------|:----------|
-| English               | en     | 1k        | 1m         | 1b       | 1t        |
-| Russian               | ru     | 1тыс      | 1млн       | 1млд    | 1трн      |
+| Language              | ISO 639-1  | Thousand  | Million    | Billion  | Trillion  |
+|:----------------------|:-----------|:----------|:-----------|:---------|:----------|
+| English               | en         | 1k        | 1m         | 1b       | 1t        |
+| Russian               | ru         | 1тыс      | 1млн       | 1млд    | 1трн      |
 
 ## Usage
 

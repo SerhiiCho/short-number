@@ -29,8 +29,7 @@ class Lang
      * If you don't call this method, the default
      * language will be also English.
      *
-     * @param string $lang Can be 'ru' or 'en' for example.
-     * Or any other language that is supported by this package.
+     * @param string $lang ISO 639-1 of the language
      * @param string[]|null $custom_translations
      *
      * @see https://github.com/SerhiiCho/short-number
