@@ -12,6 +12,15 @@ class Number
     private $options;
 
     /**
+     * @var int|null
+     */
+    private $number;
+
+    private function __construct()
+    {
+    }
+
+    /**
      * @var \Serhii\ShortNumber\Number|null
      */
     private static $instance;
@@ -45,30 +54,50 @@ class Number
     private function process(int $number, array $options): string
     {
         $this->options = $options;
-        $number_is_negative = $number < 0;
+        $this->number = $number;
 
         Lang::includeTranslations();
 
+        $number_is_negative = $number < 0;
+
         if ($number_is_negative) {
-            $number = (int) \abs($number);
+            $this->number = (int) \abs($this->number);
         }
 
-        $rules = [
+        $rules = $this->createRules();
+
+        $needed_rule = $this->getRuleThatMatchesNumber($rules);
+
+        $result = !empty($needed_rule)
+            ? \current($needed_rule)->formatNumber($this->number)
+            : \end($rules)->formatNumber($this->number);
+
+        return $number_is_negative ? "-$result" : $result;
+    }
+
+    /**
+     * @return \Serhii\ShortNumber\Rule[]
+     */
+    private function createRules(): array
+    {
+        return [
             new Rule('', [0, 999], $this->options),
             new Rule('thousand', [Rule::THOUSAND, Rule::MILLION - 1], $this->options),
             new Rule('million', [Rule::MILLION, Rule::BILLION - 1], $this->options),
             new Rule('billion', [Rule::BILLION, Rule::TRILLION - 1], $this->options),
             new Rule('trillion', [Rule::TRILLION, Rule::QUADRILLION - 1], $this->options),
         ];
-
-        $needed_rule = \array_filter($rules, static function ($rule) use ($number) {
-            return $rule->inRange($number);
-        });
-
-        $result = !empty($needed_rule)
-            ? \current($needed_rule)->formatNumber($number)
-            : \end($rules)->formatNumber($number);
-
-        return $number_is_negative ? "-$result" : $result;
     }
+
+    /**
+     * @param array $rules
+     *
+     * @return array
+     */
+    private function getRuleThatMatchesNumber(array $rules): array
+    {
+        return \array_filter($rules, function ($rule) {
+            return $rule->inRange($this->number);
+        });
+}
 }

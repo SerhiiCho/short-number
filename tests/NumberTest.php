@@ -18,7 +18,7 @@ class NumberTest extends TestCase
     {
         $reflect = new ReflectionMethod(Lang::class, 'availableLanguages');
         $reflect->setAccessible(true);
-        $output = $reflect->invoke(new Lang);
+        $output = $reflect->invoke(new Lang());
 
         $this->assertContains('ru', $output);
         $this->assertContains('en', $output);
@@ -31,10 +31,10 @@ class NumberTest extends TestCase
      * @param string $lang
      * @param int $input
      */
-    public function it_can_convert_number_to_lowercase(string $expect, string $lang, int $input): void
+    public function it_can_convert_number_to_uppercase(string $expect, string $lang, int $input): void
     {
         Lang::set($lang);
-        $this->assertEquals(mb_strtolower($expect), Number::conv($input, Option::LOWER));
+        $this->assertEquals($expect, Number::conv($input, Option::UPPER));
     }
 
     public function provider_for_sets_method_sets_russian_the_current_language_for_converter(): array
@@ -67,14 +67,14 @@ class NumberTest extends TestCase
     public function provider_for_it_can_convert_negative_numbers(): array
     {
         return [
-            ['-1K', 'en', -Rule::THOUSAND],
-            ['-1M', 'en', -Rule::MILLION],
-            ['-1B', 'en', -Rule::BILLION],
-            ['-1T', 'en', -Rule::TRILLION],
-            ['-1ТЫС', 'ru', -Rule::THOUSAND],
-            ['-1МЛН', 'ru', -Rule::MILLION],
-            ['-1МЛД', 'ru', -Rule::BILLION],
-            ['-1ТРН', 'ru', -Rule::TRILLION],
+            ['-1k', 'en', -Rule::THOUSAND],
+            ['-1m', 'en', -Rule::MILLION],
+            ['-1b', 'en', -Rule::BILLION],
+            ['-1t', 'en', -Rule::TRILLION],
+            ['-1тыс', 'ru', -Rule::THOUSAND],
+            ['-1млн', 'ru', -Rule::MILLION],
+            ['-1млд', 'ru', -Rule::BILLION],
+            ['-1трн', 'ru', -Rule::TRILLION],
         ];
     }
 }

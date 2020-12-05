@@ -7,10 +7,10 @@ namespace Serhii\ShortNumber;
 class Option
 {
     /**
-     * Returns lowercase result instead of uppercase
+     * Returns uppercase result instead of lowercase
      *
-     * @example Number::conv(1111) => 1K
-     * @example Number::conv(1111, Option::LOWER) => 1k
+     * @example Number::conv(1111) => 1k
+     * @example Number::conv(1111, Option::UPPER) => 1K
      */
-    public const LOWER = 1;
+    public const UPPER = 1;
 }

@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 return [
 
-    'thousand' => 'ТЫС',
-    'million' => 'МЛН',
-    'billion' => 'МЛД',
-    'trillion' => 'ТРН',
+    'thousand' => 'тыс',
+    'million' => 'млн',
+    'billion' => 'млд',
+    'trillion' => 'трн',
 
 ];

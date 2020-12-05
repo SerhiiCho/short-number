@@ -80,8 +80,8 @@ class Rule
             return '';
         }
 
-        if (\in_array(Option::LOWER, $this->options, true)) {
-            return \mb_strtolower(Lang::trans($this->number_name));
+        if (\in_array(Option::UPPER, $this->options, true)) {
+            return \mb_strtoupper(Lang::trans($this->number_name));
         }
 
         return Lang::trans($this->number_name);
