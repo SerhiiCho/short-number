@@ -12,13 +12,13 @@ class TestCase extends \PHPUnit\Framework\TestCase
 {
     /**
      * @param string $lang Set language
-     * @param array $prefixes
+     * @param array $suffixes
      */
-    public function runTestsForSuffixes(string $lang, array $prefixes): void
+    public function runTestsForSuffixes(string $lang, array $suffixes): void
     {
         Lang::set($lang);
 
-        [$k, $m, $b, $t] = $prefixes;
+        [$k, $m, $b, $t] = $suffixes;
 
         $_ = $this->generateDataForProvider(0, Rule::THOUSAND - 1);
         $K = $this->generateDataForProvider(Rule::THOUSAND, Rule::MILLION - 1);

@@ -8,6 +8,8 @@
 
 Lightweight package shortens given number to a short representation of it. For example **1234** will be formatted to **1k** and **20244023** to **20m**. Package supports multiple languages, the default it's set to English.
 
+- [Contribute](https://github.com/SerhiiCho/short-number/blob/master/CONTRIBUTE.md)
+
 ## Supported languages
 
 | Language         | Short  | Thousand  | Million    | Billion  | Trillion  |
@@ -16,8 +18,6 @@ Lightweight package shortens given number to a short representation of it. For e
 | Русский         | ru     | 1тыс      | 1млн       | 1млд    | 1трн      |
 
 ## Usage
-
-[Example usage on repl.it](https://repl.it/@SerhiiCho/Usage-of-short-number-package)
 
 ```php
 use Serhii\ShortNumber\Number;
@@ -55,7 +55,3 @@ Number::conv(1352, Option::UPPER); // returns: 1k
 ```bash
 composer require serhii/short-number
 ```
-
-## Contribute
-
-You can provide any issues or pull requests that are in a frame of this package. For adding language support you can copy any file in `src/lang` directory and translate it. After adding language would be nice to add information about new language to a table in README.md file in section [Supported languages](https://github.com/SerhiiCho/short-number#supported-languages).

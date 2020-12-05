@@ -57,6 +57,6 @@ class Lang
 
     public static function includeTranslations(): void
     {
-        self::$translations = require __DIR__ . '/../resources/translation.php';
+        self::$translations = require __DIR__ . '/../resources/translations.php';
     }
 }
