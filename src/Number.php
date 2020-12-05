@@ -14,27 +14,26 @@ class Number
     /**
      * @var bool
      */
-    private static $is_negative = false;
+    private static $number_is_negative = false;
 
     /**
      * Takes number and looks at it, if this number is between 1 thousand and 1 million
      * function returns this number with "K" after number, if its bigger it will
      * return this number with 'M' after.
      *
-     * @param int|float $num
+     * @param int $number
      * @param int[]|int|null $options
+     *
      * @return string
      */
-    public static function conv($num, $options = []): string
+    public static function conv(int $number, $options = []): string
     {
         self::$options = \is_array($options) ? $options : [$options];
 
-        $num = (int) $num;
+        self::$number_is_negative = $number < 0;
 
-        self::$is_negative = $num < 0;
-
-        if (self::$is_negative) {
-            $num = abs($num);
+        if (self::$number_is_negative) {
+            $number = (int)\abs($number);
         }
 
         Lang::includeTranslations();
@@ -47,14 +46,14 @@ class Number
             new Rule('trillion', [Rule::TRILLION, Rule::QUADRILLION - 1], self::$options),
         ];
 
-        $needed_rule = \array_filter($rules, static function ($rule) use ($num) {
-            return $rule->inRange($num);
+        $needed_rule = \array_filter($rules, static function ($rule) use ($number) {
+            return $rule->inRange($number);
         });
 
         $result = !empty($needed_rule)
-            ? \current($needed_rule)->formatNumber($num)
-            : \end($rules)->formatNumber($num);
+            ? \current($needed_rule)->formatNumber($number)
+            : \end($rules)->formatNumber($number);
 
-        return self::$is_negative ? "-$result" : $result;
+        return self::$number_is_negative ? "-$result" : $result;
     }
 }
