@@ -12,6 +12,11 @@ class Number
     private static $options;
 
     /**
+     * @var bool
+     */
+    private static $is_negative = false;
+
+    /**
      * Takes number and looks at it, if this number is between 1 thousand and 1 million
      * function returns this number with "K" after number, if its bigger it will
      * return this number with 'M' after.
@@ -25,6 +30,12 @@ class Number
         self::$options = \is_array($options) ? $options : [$options];
 
         $num = (int) $num;
+
+        self::$is_negative = $num < 0;
+
+        if (self::$is_negative) {
+            $num = abs($num);
+        }
 
         Lang::includeTranslations();
 
@@ -40,8 +51,10 @@ class Number
             return $rule->inRange($num);
         });
 
-        return !empty($needed_rule)
+        $result = !empty($needed_rule)
             ? \current($needed_rule)->formatNumber($num)
             : \end($rules)->formatNumber($num);
+
+        return self::$is_negative ? "-$result" : $result;
     }
 }
