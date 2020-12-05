@@ -10,6 +10,5 @@ class TranslationsTest extends TestCase
     {
         $this->runTestsForSuffixes('en', ['k', 'm', 'b', 't']);
         $this->runTestsForSuffixes('ru', ['тыс', 'млн', 'млд', 'трн']);
-        $this->runTestsForSuffixes('uk', ['тис', 'млн', 'млд', 'трн']);
     }
 }
