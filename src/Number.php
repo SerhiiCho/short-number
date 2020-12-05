@@ -56,8 +56,6 @@ class Number
         $this->options = $options;
         $this->number = $number;
 
-        Lang::includeTranslations();
-
         $number_is_negative = $number < 0;
 
         if ($number_is_negative) {

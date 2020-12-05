@@ -10,6 +10,30 @@ Lightweight package shortens given number to a short representation of it. For e
 
 - [Contribute](https://github.com/SerhiiCho/short-number/blob/master/CONTRIBUTE.md)
 
+
+## Language configurations
+
+#### Change language
+
+For changing the language you want to call `set()` method once before calling other methods from this package.
+
+```php
+Serhii\ShortNumber\Lang::set('ru');
+```
+
+#### Overwrite translations
+
+If you want to replace existing translations for supported language or add your own language, you can pass translations as the second argument to `set()` method
+
+```php
+Serhii\ShortNumber\Lang::set('en', [
+    'thousand' => 'thou',
+    'million' => 'mil',
+    'billion' => 'bil',
+    'trillion' => 'tril',
+]);
+```
+
 ## Supported languages
 
 | Language         | Short  | Thousand  | Million    | Billion  | Trillion  |
@@ -24,16 +48,6 @@ use Serhii\ShortNumber\Number;
 
 Number::conv(1893234); // returns: 1m
 Number::conv(20234); // returns: 20m
-```
-
-## Configurations
-
-#### Change language
-
-For changing the language you want to call `set` method once before calling other methods from this package.
-
-```php
-Serhii\ShortNumber\Lang::set('ru');
 ```
 
 ## Options

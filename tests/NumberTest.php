@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Serhii\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Serhii\ShortNumber\Lang;
 use Serhii\ShortNumber\Number;
 use Serhii\ShortNumber\Option;
