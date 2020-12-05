@@ -1,54 +1,53 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Serhii\Tests;
 
-use PHPUnit\Framework\TestCase;
-use ReflectionMethod;
-use Serhii\ShortNumber\Conv;
 use Serhii\ShortNumber\Lang;
-use Serhii\ShortNumber\Rule;
 
 class LangTest extends TestCase
 {
     /** @test */
-    public function availableLanguages_returns_array_of_file_names_in_lang_directory(): void
+    public function method_trans_returns_translations_if_custom_translations_are_not_provided(): void
     {
-        $reflect = new ReflectionMethod(Lang::class, 'availableLanguages');
-        $reflect->setAccessible(true);
-        $output = $reflect->invoke(new Lang);
+        Lang::set('ru');
 
-        $this->assertTrue(in_array('ru', $output));
-        $this->assertTrue(in_array('en', $output));
+        $this->assertSame('тыс', Lang::trans('thousand'));
+        $this->assertSame('млн', Lang::trans('million'));
+        $this->assertSame('млд', Lang::trans('billion'));
+        $this->assertSame('трн', Lang::trans('trillion'));
     }
 
-    /**
-     * @dataProvider Provider_for_sets_method_sets_russian_the_current_language_for_converter
-     * @test
-     * @param string $expect
-     * @param string $lang
-     * @param int $input
-     */
-    public function sets_method_sets_current_language_for_converter(string $expect, string $lang, int $input): void
+    /** @test */
+    public function method_trans_returns_custom_translations_if_they_provided_for_existing_language(): void
     {
-        Lang::set($lang);
-        $this->assertEquals($expect, Conv::short($input));
-        $this->assertEquals(strtolower($expect), Conv::short($input, 'lower'));
-        $this->assertEquals(strtolower($expect), Conv::short($input, ['lower']));
+        Lang::set('en', [
+            'thousand' => 'thou',
+            'million' => 'mil',
+            'billion' => 'bil',
+            'trillion' => 'tril',
+        ]);
+
+        $this->assertSame('thou', Lang::trans('thousand'));
+        $this->assertSame('mil', Lang::trans('million'));
+        $this->assertSame('bil', Lang::trans('billion'));
+        $this->assertSame('tril', Lang::trans('trillion'));
     }
 
-    public function Provider_for_sets_method_sets_russian_the_current_language_for_converter(): array
+    /** @test */
+    public function method_trans_returns_custom_translations_if_they_provided_for_none_existing_language(): void
     {
-        return [
-            ['0', 'en', 0],
-            ['1K', 'en', Rule::THOUSAND],
-            ['1M', 'en', Rule::MILLION],
-            ['1B', 'en', Rule::BILLION],
-            ['1T', 'en', Rule::TRILLION],
-            ['0',  'ru', 0],
-            ['1ТЫС', 'ru', Rule::THOUSAND],
-            ['1МЛН', 'ru', Rule::MILLION],
-            ['1МЛД', 'ru', Rule::BILLION],
-            ['1ТРН', 'ru', Rule::TRILLION],
-        ];
+        Lang::set('xx', [
+            'thousand' => 'x1',
+            'million' => 'x2',
+            'billion' => 'x3',
+            'trillion' => 'x4',
+        ]);
+
+        $this->assertSame('x1', Lang::trans('thousand'));
+        $this->assertSame('x2', Lang::trans('million'));
+        $this->assertSame('x3', Lang::trans('billion'));
+        $this->assertSame('x4', Lang::trans('trillion'));
     }
 }
