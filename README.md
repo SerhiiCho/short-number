@@ -61,8 +61,8 @@ By default, conv() method is returning lowercase result, to make it uppercase ju
 use Serhii\ShortNumber\Option;
 use Serhii\ShortNumber\Number;
 
-Number::conv(1352); // returns: 1K
-Number::conv(1352, Option::UPPER); // returns: 1k
+Number::conv(1352); // returns: 1k
+Number::conv(1352, Option::UPPER); // returns: 1K
 ```
 
 ## Get started
