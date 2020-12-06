@@ -60,8 +60,8 @@ class Lang
     {
         $lang = self::$translations[self::$lang];
 
-        if (self::$custom_translations && !empty(self::$custom_translations)) {
-            $lang = self::$custom_translations;
+        if (self::$custom_translations) {
+            $lang = \array_merge($lang, self::$custom_translations);
         }
 
         return $lang[$index] ?? null;

@@ -23,15 +23,22 @@ Serhii\ShortNumber\Lang::set('ru');
 
 #### Overwrite translations
 
-If you want to replace existing translations for supported language or add your own language, you can pass translations as the second argument to `set()` method
+If you want to replace existing translations for supported language or add your own language, you can pass custom translations as the second argument to `set()` method.
 
 ```php
+// Overwriting all fields
 Serhii\ShortNumber\Lang::set('en', [
     'thousand' => 'thou',
     'million' => 'mil',
     'billion' => 'bil',
     'trillion' => 'tril',
 ]);
+```
+You can overwrite any fields that you need, overwriting all fields is not necessary.
+
+```php
+// Overwriting 1 field
+Serhii\ShortNumber\Lang::set('en', ['million' => 'mil']);
 ```
 
 ## Supported languages
