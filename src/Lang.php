@@ -12,7 +12,7 @@ class Lang
     public static $lang = 'en';
 
     /**
-     * @var null|array
+     * @var array<string, string[]>|null
      */
     private static $translations;
 
@@ -44,7 +44,7 @@ class Lang
     /**
      * Returns array of languages that are currently in lang directory
      *
-     * @return array
+     * @return string[]
      */
     private static function availableLanguages(): array
     {
@@ -53,18 +53,22 @@ class Lang
 
     /**
      * @param string $index The key name of the translation
-     * @return string|null Needed translation for current language,
-     * if translation not found returns null
+     * @return string Needed translation for current language,
+     * if translation not found returns empty string
      */
-    public static function trans(string $index): ?string
+    public static function trans(string $index): string
     {
+        if (!self::$translations) {
+            return '';
+        }
+
         $lang = self::$translations[self::$lang];
 
         if (self::$custom_translations) {
             $lang = \array_merge($lang, self::$custom_translations);
         }
 
-        return $lang[$index] ?? null;
+        return $lang[$index] ?? '';
     }
 
     public static function includeTranslations(): void

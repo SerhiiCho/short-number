@@ -18,12 +18,12 @@ class Rule
     private $number_name;
 
     /**
-     * @var array
+     * @var int[]
      */
     private $options;
 
     /**
-     * @var array
+     * @var int[]
      */
     private $range;
 
@@ -31,8 +31,8 @@ class Rule
      * Rule constructor.
      *
      * @param string $number_name
-     * @param array $range
-     * @param array $options
+     * @param int[] $range
+     * @param int[] $options
      */
     public function __construct(string $number_name, array $range, array $options)
     {
@@ -50,12 +50,12 @@ class Rule
         $num = (string) $num;
 
         if ($num < self::THOUSAND) {
-            return $num.$this->getSuffix();
+            return $num . $this->getSuffix();
         }
 
         $short_num = \explode(',', \number_format((float) $num))[0];
 
-        return $short_num.$this->getSuffix();
+        return $short_num . $this->getSuffix();
     }
 
     /**
