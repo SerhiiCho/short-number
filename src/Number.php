@@ -66,7 +66,7 @@ class Number
         $rules = $this->createRules();
 
         $needed_rule = $this->getRuleThatMatchesNumber($rules);
-        $last_rule = $rules[count($rules) - 1];
+        $last_rule = $rules[\count($rules) - 1];
 
         $result = !empty($needed_rule)
             ? \current($needed_rule)->formatNumber($this->number)
