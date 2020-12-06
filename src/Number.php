@@ -7,16 +7,16 @@ namespace Serhii\ShortNumber;
 class Number
 {
     /**
-     * @var array|null
+     * @var int[]
      */
     private $options;
 
     /**
-     * @var int|null
+     * @var int
      */
     private $number;
 
-    private function __construct()
+    final private function __construct()
     {
     }
 
@@ -38,8 +38,9 @@ class Number
      *
      * @return string
      */
-    public static function conv(int $number, $options = []): string
+    public static function conv(int $number, $options = null): string
     {
+        $options = $options ?? [];
         return self::singleton()->process($number, \is_array($options) ? $options : [$options]);
     }
 
@@ -47,7 +48,7 @@ class Number
      * Converts given number to its short form.
      *
      * @param int $number
-     * @param int[]|array $options
+     * @param int[] $options
      *
      * @return string
      */
@@ -65,10 +66,11 @@ class Number
         $rules = $this->createRules();
 
         $needed_rule = $this->getRuleThatMatchesNumber($rules);
+        $last_rule = $rules[\count($rules) - 1];
 
         $result = !empty($needed_rule)
             ? \current($needed_rule)->formatNumber($this->number)
-            : \end($rules)->formatNumber($this->number);
+            : $last_rule->formatNumber($this->number);
 
         return $number_is_negative ? "-$result" : $result;
     }
@@ -88,14 +90,14 @@ class Number
     }
 
     /**
-     * @param array $rules
+     * @param \Serhii\ShortNumber\Rule[] $rules
      *
-     * @return array
+     * @return \Serhii\ShortNumber\Rule[]
      */
     private function getRuleThatMatchesNumber(array $rules): array
     {
         return \array_filter($rules, function ($rule) {
             return $rule->inRange($this->number);
         });
-}
+    }
 }

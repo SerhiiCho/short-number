@@ -20,19 +20,47 @@ class LangTest extends TestCase
     }
 
     /** @test */
-    public function method_trans_returns_custom_translations_if_they_provided_for_existing_language(): void
+    public function method_trans_can_overwrite_1_field(): void
     {
-        Lang::set('en', [
-            'thousand' => 'thou',
-            'million' => 'mil',
-            'billion' => 'bil',
-            'trillion' => 'tril',
-        ]);
+        Lang::set('en', ['thousand' => 'thou']);
 
         $this->assertSame('thou', Lang::trans('thousand'));
-        $this->assertSame('mil', Lang::trans('million'));
-        $this->assertSame('bil', Lang::trans('billion'));
-        $this->assertSame('tril', Lang::trans('trillion'));
+        $this->assertSame('m', Lang::trans('million'));
+        $this->assertSame('b', Lang::trans('billion'));
+        $this->assertSame('t', Lang::trans('trillion'));
+    }
+
+    /** @test */
+    public function method_trans_can_overwrite_2_fields(): void
+    {
+        Lang::set('en', ['thousand' => 'th', 'million' => 'mi']);
+
+        $this->assertSame('th', Lang::trans('thousand'));
+        $this->assertSame('mi', Lang::trans('million'));
+        $this->assertSame('b', Lang::trans('billion'));
+        $this->assertSame('t', Lang::trans('trillion'));
+    }
+
+    /** @test */
+    public function method_trans_can_overwrite_3_fields(): void
+    {
+        Lang::set('en', ['thousand' => 'th', 'million' => 'mi', 'billion' => 'bi']);
+
+        $this->assertSame('th', Lang::trans('thousand'));
+        $this->assertSame('mi', Lang::trans('million'));
+        $this->assertSame('bi', Lang::trans('billion'));
+        $this->assertSame('t', Lang::trans('trillion'));
+    }
+
+    /** @test */
+    public function method_trans_can_overwrite_4_fields(): void
+    {
+        Lang::set('en', ['thousand' => 'th', 'million' => 'mi', 'billion' => 'bi', 'trillion' => 'tr']);
+
+        $this->assertSame('th', Lang::trans('thousand'));
+        $this->assertSame('mi', Lang::trans('million'));
+        $this->assertSame('bi', Lang::trans('billion'));
+        $this->assertSame('tr', Lang::trans('trillion'));
     }
 
     /** @test */
