@@ -11,3 +11,8 @@ check:
 	make cs
 	make stan
 	make phpunit
+
+push:
+	make check
+	git pull origin HEAD
+	git push origin HEAD
