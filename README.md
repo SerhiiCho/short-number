@@ -1,5 +1,3 @@
-<h1 align="center">Short number</h1>
-
 [![Build Status](https://img.shields.io/endpoint.svg?url=https%3A%2F%2Factions-badge.atrox.dev%2FSerhiiCho%2Fshort-number%2Fbadge&style=flat)](https://actions-badge.atrox.dev/SerhiiCho/short-number/goto)
 [![Latest Stable Version](https://poser.pugx.org/serhii/short-number/v/stable)](https://packagist.org/packages/serhii/short-number)
 [![Total Downloads](https://poser.pugx.org/serhii/short-number/downloads)](https://packagist.org/packages/serhii/short-number)
@@ -43,11 +41,44 @@ Serhii\ShortNumber\Lang::set('en', ['million' => 'mil']);
 
 ## Supported languages
 
-| Language              | ISO 639-1  | Thousand  | Million    | Billion  | Trillion  |
-|:----------------------|:-----------|:----------|:-----------|:---------|:----------|
-| English               | en         | 1k        | 1m         | 1b       | 1t        |
-| Russian               | ru         | 1тыс      | 1млн       | 1млд    | 1трн      |
-| Ukrainian             | uk         | 1тис      | 1млн       | 1млд    | 1трн      |
+<table>
+    <thead>
+        <tr>
+            <th>Language</th>
+            <th>ISO 639-1</th>
+            <th>Thousand</th>
+            <th>Million</th>
+            <th>Billion</th>
+            <th>Trillion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>English</td>
+            <td>en</td>
+            <td>1k</td>
+            <td>1m</td>
+            <td>1b</td>
+            <td>1t</td>
+        </tr>
+        <tr>
+            <td>Russian</td>
+            <td>ru</td>
+            <td>1тыс</td>
+            <td>1млн</td>
+            <td>1млд</td>
+            <td>1трн</td>
+        </tr>
+        <tr>
+            <td>Ukrainian</td>
+            <td>uk</td>
+            <td>1тис</td>
+            <td>1млн</td>
+            <td>1млд</td>
+            <td>1трн</td>
+        </tr>
+    </tbody>
+</table>
 
 ## Usage
 
