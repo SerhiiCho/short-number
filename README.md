@@ -24,7 +24,6 @@ Lightweight package shortens given number to a short representation of it. For e
 - ✅ 8.0
 - ✅ 8.1
 
-
 ## Language configurations
 
 #### Change language
