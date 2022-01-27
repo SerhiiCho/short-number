@@ -4,6 +4,13 @@
 
 ----
 
+## v3.0.1 (2022-01-27)
+
+- Added link to `README.md` that shows example of usage;
+- Fixed bug with default English language. It didn't default to English when language is not set;
+
+----
+
 ## v3.0.0 (2022-01-27)
 
 - Added `CHANGELOG.md` file;

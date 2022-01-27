@@ -11,6 +11,18 @@ use Serhii\ShortNumber\Rule;
 class NumberTest extends TestCase
 {
     /**
+     * @runInSeparateProcess
+     * @test
+     */
+    public function it_defaults_to_english_language_if_language_is_not_set(): void
+    {
+        $this->assertEquals('1k', Number::conv(Rule::THOUSAND));
+        $this->assertEquals('1m', Number::conv(Rule::MILLION));
+        $this->assertEquals('1b', Number::conv(Rule::BILLION));
+        $this->assertEquals('1t', Number::conv(Rule::TRILLION));
+    }
+
+    /**
      * @dataProvider provider_for_it_can_convert_negative_numbers
      * @test
      * @param string $expect

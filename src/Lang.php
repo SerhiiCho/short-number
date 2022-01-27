@@ -12,7 +12,7 @@ class Lang
     public static $lang = 'en';
 
     /**
-     * @var array<string, string[]>|null
+     * @var array<string, array<string>>|null
      */
     private static $translations;
 
@@ -59,9 +59,10 @@ class Lang
     public static function trans(string $index): string
     {
         if (!self::$translations) {
-            return '';
+            self::includeTranslations();
         }
 
+        /** @phpstan-ignore-next-line */
         $lang = self::$translations[self::$lang];
 
         if (self::$custom_translations) {
