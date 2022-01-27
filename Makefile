@@ -4,13 +4,13 @@ stan:
 cs:
 	./vendor/bin/phpcs src resources --colors -p
 
-phpunit:
+test:
 	./vendor/bin/phpunit --colors
 
 check:
 	make cs
 	make stan
-	make phpunit
+	make test
 
 push:
 	make check

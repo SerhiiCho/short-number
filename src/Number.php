@@ -4,19 +4,14 @@ declare(strict_types=1);
 
 namespace Serhii\ShortNumber;
 
-class Number
+final class Number
 {
-    /**
-     * @var int[]
-     */
-    private $options;
-
     /**
      * @var int
      */
     private $number;
 
-    final private function __construct()
+    private function __construct()
     {
     }
 
@@ -34,27 +29,23 @@ class Number
      * Converts given number to its short form.
      *
      * @param int $number
-     * @param int[]|int|null $options
      *
      * @return string
      */
-    public static function conv(int $number, $options = null): string
+    public static function conv(int $number): string
     {
-        $options = $options ?? [];
-        return self::singleton()->process($number, \is_array($options) ? $options : [$options]);
+        return self::singleton()->process($number);
     }
 
     /**
      * Converts given number to its short form.
      *
      * @param int $number
-     * @param int[] $options
      *
      * @return string
      */
-    private function process(int $number, array $options): string
+    private function process(int $number): string
     {
-        $this->options = $options;
         $this->number = $number;
 
         $number_is_negative = $number < 0;
@@ -81,11 +72,11 @@ class Number
     private function createRules(): array
     {
         return [
-            new Rule('', [0, 999], $this->options),
-            new Rule('thousand', [Rule::THOUSAND, Rule::MILLION - 1], $this->options),
-            new Rule('million', [Rule::MILLION, Rule::BILLION - 1], $this->options),
-            new Rule('billion', [Rule::BILLION, Rule::TRILLION - 1], $this->options),
-            new Rule('trillion', [Rule::TRILLION, Rule::QUADRILLION - 1], $this->options),
+            new Rule('', [0, 999]),
+            new Rule('thousand', [Rule::THOUSAND, Rule::MILLION - 1]),
+            new Rule('million', [Rule::MILLION, Rule::BILLION - 1]),
+            new Rule('billion', [Rule::BILLION, Rule::TRILLION - 1]),
+            new Rule('trillion', [Rule::TRILLION, Rule::QUADRILLION - 1]),
         ];
     }
 
