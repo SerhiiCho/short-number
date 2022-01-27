@@ -38,11 +38,11 @@ class Rule
      * @param mixed $num
      * @return string
      */
-    public function formatNumber($num): string
+    public function formatNumber(int $number): string
     {
-        $num = (string) $num;
+        $num = (string) $number;
 
-        if ($num < self::THOUSAND) {
+        if ($number < self::THOUSAND) {
             return $num . $this->getSuffix();
         }
 
