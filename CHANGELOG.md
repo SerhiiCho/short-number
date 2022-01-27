@@ -4,6 +4,12 @@
 
 ----
 
+## v3.0.2 (2022-01-27)
+
+- Removed section in docs that is not relevant;
+
+----
+
 ## v3.0.1 (2022-01-27)
 
 - Added link to `README.md` that shows example of usage;

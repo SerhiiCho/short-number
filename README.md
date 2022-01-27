@@ -8,7 +8,6 @@
 - [⚙️ Language configurations](#language-configurations)
 - [🚩 Supported languages](#supported-languages)
 - [👏 Usage](#usage)
-- [🤲 Options](#options)
 - [🚀 Quick start](#quick-start)
 - [🎁 Contribute](https://github.com/SerhiiCho/short-number/blob/master/CONTRIBUTE.md)
 - [📖 Usage example on replit.com](https://replit.com/@SerhiiCho/Usage-of-short-number-package)
@@ -70,20 +69,6 @@ use Serhii\ShortNumber\Number;
 
 Number::conv(1893234); // returns: 1m
 Number::conv(20234); // returns: 20m
-```
-
-## Options
-
-#### Output to lowercase
-
-By default, conv() method is returning lowercase result, to make it uppercase just pass `Option::UPPER` as the second argument to a `conv()` method.
-
-```php
-use Serhii\ShortNumber\Option;
-use Serhii\ShortNumber\Number;
-
-Number::conv(1352); // returns: 1k
-Number::conv(1352, Option::UPPER); // returns: 1K
 ```
 
 ## Quick start
