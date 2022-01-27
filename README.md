@@ -11,6 +11,7 @@
 - [🤲 Options](#options)
 - [🚀 Quick start](#quick-start)
 - [🎁 Contribute](https://github.com/SerhiiCho/short-number/blob/master/CONTRIBUTE.md)
+- [📖 Usage example on replit.com](https://replit.com/@SerhiiCho/Usage-of-short-number-package)
 
 ## Description
 

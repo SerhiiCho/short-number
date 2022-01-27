@@ -4,6 +4,12 @@
 
 ----
 
+## v3.0.1 (2022-01-27)
+
+- Added link to `README.md` that shows example of usage;
+
+----
+
 ## v3.0.0 (2022-01-27)
 
 - Added `CHANGELOG.md` file;
