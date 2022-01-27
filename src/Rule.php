@@ -20,11 +20,6 @@ class Rule
     /**
      * @var int[]
      */
-    private $options;
-
-    /**
-     * @var int[]
-     */
     private $range;
 
     /**
@@ -32,11 +27,9 @@ class Rule
      *
      * @param string $number_name
      * @param int[] $range
-     * @param int[] $options
      */
-    public function __construct(string $number_name, array $range, array $options)
+    public function __construct(string $number_name, array $range)
     {
-        $this->options = $options;
         $this->number_name = $number_name;
         $this->range = $range;
     }
@@ -78,10 +71,6 @@ class Rule
     {
         if (!$this->number_name) {
             return '';
-        }
-
-        if (\in_array(Option::UPPER, $this->options, true)) {
-            return \mb_strtoupper(Lang::trans($this->number_name));
         }
 
         return Lang::trans($this->number_name);
