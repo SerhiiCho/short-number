@@ -11,6 +11,7 @@
 - Added support for `PHP 8.1`;
 - Added .gitattributes to exclude `Makefile`;
 - Improved documentation;
+- Removed support for `PHP 7.1`;
 
 ----
 
