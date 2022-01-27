@@ -9,6 +9,7 @@
 - Added `CHANGELOG.md` file;
 - Removed ability to pass option `Option::UPPER` as the second argument to `conv` method;
 - Added support for `PHP 8.1`;
+- Added .gitattributes to exclude `Makefile`;
 
 ----
 
