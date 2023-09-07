@@ -27,11 +27,11 @@ class TestCase extends \PHPUnit\Framework\TestCase
         $T = $this->generateDataForProvider(Rule::TRILLION, Rule::QUADRILLION - 1);
 
         for ($i = 0, $count = count($K); $i < $count; $i++) {
-            $this->assertEquals($_[$i]['expect'], Number::conv($inp = $_[$i]['input']), "Failed on test #$inp");
-            $this->assertEquals("{$K[$i]['expect']}$k", Number::conv($inp = $K[$i]['input']), "Failed on test #$inp");
-            $this->assertEquals("{$M[$i]['expect']}$m", Number::conv($inp = $M[$i]['input']), "Failed on test #$inp");
-            $this->assertEquals("{$B[$i]['expect']}$b", Number::conv($inp = $B[$i]['input']), "Failed on test #$inp");
-            $this->assertEquals("{$T[$i]['expect']}$t", Number::conv($inp = $T[$i]['input']), "Failed on test #$inp");
+            $this->assertEquals($_[$i]['expect'], Number::conv($inp = $_[$i]['input']), "Failed on test #{$inp}");
+            $this->assertEquals("{$K[$i]['expect']}$k", Number::conv($inp = $K[$i]['input']), "Failed on test #{$inp}");
+            $this->assertEquals("{$M[$i]['expect']}$m", Number::conv($inp = $M[$i]['input']), "Failed on test #{$inp}");
+            $this->assertEquals("{$B[$i]['expect']}$b", Number::conv($inp = $B[$i]['input']), "Failed on test #{$inp}");
+            $this->assertEquals("{$T[$i]['expect']}$t", Number::conv($inp = $T[$i]['input']), "Failed on test #{$inp}");
         }
     }
 

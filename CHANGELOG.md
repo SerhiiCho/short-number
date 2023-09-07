@@ -4,6 +4,16 @@
 
 ----
 
+## v3.0.3 (2023-09-07)
+
+- Renamed master branch to main
+- Added support for `PHP 8.2`
+- Installed Pint
+- Formatted code with Pint
+- Added Pint checks to github actions
+
+----
+
 ## v3.0.2 (2022-01-27)
 
 - Removed section in docs that is not relevant;
@@ -69,7 +79,7 @@
 ## v1.1 (2019-12-31)
 
 - Changed namespace for tests;
- 
+
 ----
 
 ## v1.0.1 (2019-12-16)

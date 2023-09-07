@@ -12,9 +12,9 @@ class NumberTest extends TestCase
 {
     /**
      * @runInSeparateProcess
-     * @test
+     *
      */
-    public function it_defaults_to_english_language_if_language_is_not_set(): void
+    public function testItDefaultsToEnglishLanguageIfLanguageIsNotSet(): void
     {
         $this->assertEquals('1k', Number::conv(Rule::THOUSAND));
         $this->assertEquals('1m', Number::conv(Rule::MILLION));
@@ -24,12 +24,12 @@ class NumberTest extends TestCase
 
     /**
      * @dataProvider provider_for_it_can_convert_negative_numbers
-     * @test
+     *
      * @param string $expect
      * @param string $lang
      * @param int $input
      */
-    public function it_can_convert_negative_numbers(string $expect, string $lang, int $input): void
+    public function testItCanConvertNegativeNumbers(string $expect, string $lang, int $input): void
     {
         Lang::set($lang);
         $this->assertEquals($expect, Number::conv($input));
