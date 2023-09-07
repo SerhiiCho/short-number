@@ -8,8 +8,7 @@ use Serhii\ShortNumber\Lang;
 
 class LangTest extends TestCase
 {
-    /** @test */
-    public function method_trans_returns_translations_if_custom_translations_are_not_provided(): void
+    public function testMethodTransReturnsTranslationsIfCustomTranslationsAreNotProvided(): void
     {
         Lang::set('ru');
 
@@ -19,8 +18,8 @@ class LangTest extends TestCase
         $this->assertSame('трн', Lang::trans('trillion'));
     }
 
-    /** @test */
-    public function method_trans_can_overwrite_1_field(): void
+
+    public function testMethodTransCanOverwrite1Field(): void
     {
         Lang::set('en', ['thousand' => 'thou']);
 
@@ -30,8 +29,8 @@ class LangTest extends TestCase
         $this->assertSame('t', Lang::trans('trillion'));
     }
 
-    /** @test */
-    public function method_trans_can_overwrite_2_fields(): void
+
+    public function testMethodTransCanOverwrite2Fields(): void
     {
         Lang::set('en', ['thousand' => 'th', 'million' => 'mi']);
 
@@ -41,8 +40,8 @@ class LangTest extends TestCase
         $this->assertSame('t', Lang::trans('trillion'));
     }
 
-    /** @test */
-    public function method_trans_can_overwrite_3_fields(): void
+
+    public function testMethodTransCanOverwrite3Fields(): void
     {
         Lang::set('en', ['thousand' => 'th', 'million' => 'mi', 'billion' => 'bi']);
 
@@ -52,8 +51,8 @@ class LangTest extends TestCase
         $this->assertSame('t', Lang::trans('trillion'));
     }
 
-    /** @test */
-    public function method_trans_can_overwrite_4_fields(): void
+
+    public function testMethodTransCanOverwrite4Fields(): void
     {
         Lang::set('en', ['thousand' => 'th', 'million' => 'mi', 'billion' => 'bi', 'trillion' => 'tr']);
 
@@ -63,8 +62,8 @@ class LangTest extends TestCase
         $this->assertSame('tr', Lang::trans('trillion'));
     }
 
-    /** @test */
-    public function method_trans_returns_custom_translations_if_they_provided_for_none_existing_language(): void
+
+    public function testMethodTransReturnsCustomTranslationsIfTheyProvidedForNoneExistingLanguage(): void
     {
         Lang::set('xx', [
             'thousand' => 'x1',

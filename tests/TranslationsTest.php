@@ -6,7 +6,7 @@ namespace Serhii\Tests;
 
 class TranslationsTest extends TestCase
 {
-    public function testing_correct_conversion(): void
+    public function testingCorrectConversion(): void
     {
         $this->runTestsForSuffixes('en', ['k', 'm', 'b', 't']);
         $this->runTestsForSuffixes('ru', ['тыс', 'млн', 'млд', 'трн']);
