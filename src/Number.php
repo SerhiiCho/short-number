@@ -63,7 +63,7 @@ final class Number
             ? \current($needed_rule)->formatNumber($this->number)
             : $last_rule->formatNumber($this->number);
 
-        return $number_is_negative ? "-$result" : $result;
+        return $number_is_negative ? "-{$result}" : $result;
     }
 
     /**

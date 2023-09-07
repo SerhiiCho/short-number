@@ -8,6 +8,9 @@
 
 - Renamed master branch to main
 - Added support for `PHP 8.2`
+- Installed Pint
+- Formatted code with Pint
+- Added Pint checks to github actions
 
 ----
 
