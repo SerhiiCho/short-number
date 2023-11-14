@@ -4,6 +4,12 @@
 
 ----
 
+## v3.0.4 (2023-11-14)
+
+- Added support for `PHP 8.3`
+
+----
+
 ## v3.0.3 (2023-09-07)
 
 - Renamed master branch to main
