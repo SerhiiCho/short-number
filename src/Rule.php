@@ -51,7 +51,7 @@ class Rule
 
     /**
      * Check if given value is in number range, for example
-     * thousand must be in range 1000 - 999_999
+     * a thousand must be in range 1000 - 999_999
      *
      * @param int $num
      * @return bool

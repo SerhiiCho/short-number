@@ -16,13 +16,13 @@ final class Number
     }
 
     /**
-     * @var \Serhii\ShortNumber\Number|null
+     * @var Number|null
      */
     private static $instance;
 
     public static function singleton(): self
     {
-        return static::$instance ?? (static::$instance = new static());
+        return self::$instance ?? (self::$instance = new self());
     }
 
     /**
@@ -57,7 +57,7 @@ final class Number
         $rules = $this->createRules();
 
         $needed_rule = $this->getRuleThatMatchesNumber($rules);
-        $last_rule = $rules[\count($rules) - 1];
+        $last_rule = $rules[count($rules) - 1];
 
         $result = !empty($needed_rule)
             ? \current($needed_rule)->formatNumber($this->number)
@@ -67,7 +67,7 @@ final class Number
     }
 
     /**
-     * @return \Serhii\ShortNumber\Rule[]
+     * @return Rule[]
      */
     private function createRules(): array
     {
@@ -81,9 +81,9 @@ final class Number
     }
 
     /**
-     * @param \Serhii\ShortNumber\Rule[] $rules
+     * @param Rule[] $rules
      *
-     * @return \Serhii\ShortNumber\Rule[]
+     * @return Rule[]
      */
     private function getRuleThatMatchesNumber(array $rules): array
     {
