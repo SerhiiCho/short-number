@@ -25,7 +25,7 @@ class Lang
      * Set the language by passing language short name
      * like 'en' or 'ru' as the argument.
      * If given language is not supported by this package,
-     * it language will be set to English by default.
+     * its language will be set to English by default.
      * If you don't call this method, the default
      * language will be also English.
      *
