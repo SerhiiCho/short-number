@@ -32,5 +32,17 @@
             "Serhii\\Tests\\": "tests"
         }
     },
-    "minimum-stability": "dev"
+    "minimum-stability": "dev",
+    "scripts": {
+        "stan": "phpstan analyse",
+        "cs": "phpcs src resources --colors -p",
+        "test": "phpunit --colors",
+        "pint": "pint --test",
+        "check": [
+            "@cs",
+            "@stan",
+            "@test",
+            "@pint"
+        ]
+    }
 }

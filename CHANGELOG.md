@@ -3,6 +3,7 @@
 ## v3.0.5 (2024-03-06)
 
 - Code refactoring
+- Moved scripts from `Makefile` to `composer.json` file
 
 ## v3.0.4 (2023-11-14)
 
