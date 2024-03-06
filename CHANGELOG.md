@@ -4,6 +4,7 @@
 
 - Code refactoring
 - Moved scripts from `Makefile` to `composer.json` file
+- Updated `phpstan` to the latest version
 
 ## v3.0.4 (2023-11-14)
 
