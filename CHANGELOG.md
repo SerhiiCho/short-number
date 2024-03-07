@@ -3,6 +3,7 @@
 ## v3.0.6 (2024-03-07)
 
 - Fixed typos in `CHANGELOG.md` file
+- Updated `README.md` file by adding a badge and LICENSE section
 
 ## v3.0.5 (2024-03-06)
 
