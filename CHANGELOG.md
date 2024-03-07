@@ -1,10 +1,14 @@
 # Release Notes
 
+## v3.0.6 (2024-03-07)
+
+- Fixed typos in `CHANGELOG.md` file
+
 ## v3.0.5 (2024-03-06)
 
 - Code refactoring
 - Moved scripts from `Makefile` to `composer.json` file
-- Updated `phpstan` to the latest version
+- Updated PHPStan to the latest version
 
 ## v3.0.4 (2023-11-14)
 
@@ -14,8 +18,8 @@
 
 - Renamed master branch to main
 - Added support for `PHP 8.2`
-- Installed Pint
-- Formatted code with Pint
+- Installed Laravel Pint package
+- Formatted code with Laravel Pint
 - Added Pint checks to GitHub actions
 
 ## v3.0.2 (2022-01-27)
@@ -38,14 +42,14 @@
 
 ## v2.0.3 (2021-03-16)
 
-- Added support for php 8 in composer.json file
+- Added support for php 8 in `composer.json` file
 
 ## v2.0.2 (2020-12-06)
 
-- Added phpstan
-- Added phpcs
+- Added PHPStan package
+- Added phpcs fixer package
 - Added ability to overwrite any amount of fields, not just 4 fields
-- Refactored code
+- Code refactoring
 
 ## v2.0 (2020-12-05)
 
@@ -60,7 +64,7 @@
 - Changed string options with constants
 - Changed default case to lowercase instead of uppercase
 - Added more tests
-- Added php8 to github actions CI
+- Added php8 to GitHub actions CI
 
 ## v1.1.1 (2020-11-17)
 
