@@ -7,16 +7,12 @@ namespace Serhii\ShortNumber;
 final class Number
 {
     /**
-     * @var int
+     * @var int $number
      */
     private $number;
 
-    private function __construct()
-    {
-    }
-
     /**
-     * @var Number|null
+     * @var Number|null $instance
      */
     private static $instance;
 
@@ -27,10 +23,6 @@ final class Number
 
     /**
      * Converts given number to its short form.
-     *
-     * @param int $number
-     *
-     * @return string
      */
     public static function conv(int $number): string
     {
@@ -39,10 +31,6 @@ final class Number
 
     /**
      * Converts given number to its short form.
-     *
-     * @param int $number
-     *
-     * @return string
      */
     private function process(int $number): string
     {

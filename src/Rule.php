@@ -23,9 +23,6 @@ class Rule
     private $range;
 
     /**
-     * Rule constructor.
-     *
-     * @param string $number_name
      * @param int[] $range
      */
     public function __construct(string $number_name, array $range)
@@ -34,10 +31,6 @@ class Rule
         $this->range = $range;
     }
 
-    /**
-     * @param int $num
-     * @return string
-     */
     public function formatNumber(int $num): string
     {
         if ($num < self::THOUSAND) {
@@ -52,9 +45,6 @@ class Rule
     /**
      * Check if given value is in number range, for example
      * a thousand must be in range 1000 - 999_999
-     *
-     * @param int $num
-     * @return bool
      */
     public function inRange(int $num): bool
     {
@@ -62,9 +52,6 @@ class Rule
         return $num >= $min && $num <= $max;
     }
 
-    /**
-     * @return string
-     */
     private function getSuffix(): string
     {
         if (!$this->number_name) {
