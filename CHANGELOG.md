@@ -1,5 +1,8 @@
 # Release Notes
 
+## v3.0.7 (2024-09-08)
+- Remove not working badge from `README.md` file
+
 ## v3.0.6 (2024-03-07)
 
 - Fixed typos in `CHANGELOG.md` file
