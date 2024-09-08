@@ -37,7 +37,7 @@ class Lang
     public static function set(string $lang, ?array $custom_translations = null): void
     {
         self::includeTranslations();
-        self::$lang = \in_array($lang, self::availableLanguages(), true) ? $lang : 'en';
+        self::$lang = in_array($lang, self::availableLanguages(), true) ? $lang : 'en';
         self::$custom_translations = $custom_translations;
     }
 
@@ -66,7 +66,7 @@ class Lang
         $lang = self::$translations[self::$lang];
 
         if (self::$custom_translations) {
-            $lang = \array_merge($lang, self::$custom_translations);
+            $lang = array_merge($lang, self::$custom_translations);
         }
 
         return $lang[$index] ?? '';

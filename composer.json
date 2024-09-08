@@ -10,9 +10,9 @@
     "require-dev": {
         "phpunit/phpunit": "^8.0",
         "symfony/var-dumper": "^4.2",
-        "phpstan/phpstan": "^1.10.59",
+        "phpstan/phpstan": "^1.12.2",
         "squizlabs/php_codesniffer": "^4.0",
-        "laravel/pint": "dev-main"
+        "laravel/pint": "v1.17.3"
     },
     "license": "MIT",
     "authors": [

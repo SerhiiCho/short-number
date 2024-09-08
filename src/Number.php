@@ -7,16 +7,12 @@ namespace Serhii\ShortNumber;
 final class Number
 {
     /**
-     * @var int
+     * @var int $number
      */
     private $number;
 
-    private function __construct()
-    {
-    }
-
     /**
-     * @var Number|null
+     * @var Number|null $instance
      */
     private static $instance;
 
@@ -27,10 +23,6 @@ final class Number
 
     /**
      * Converts given number to its short form.
-     *
-     * @param int $number
-     *
-     * @return string
      */
     public static function conv(int $number): string
     {
@@ -39,10 +31,6 @@ final class Number
 
     /**
      * Converts given number to its short form.
-     *
-     * @param int $number
-     *
-     * @return string
      */
     private function process(int $number): string
     {
@@ -51,7 +39,7 @@ final class Number
         $number_is_negative = $number < 0;
 
         if ($number_is_negative) {
-            $this->number = (int) \abs($this->number);
+            $this->number = (int) abs($this->number);
         }
 
         $rules = $this->createRules();
@@ -60,7 +48,7 @@ final class Number
         $last_rule = $rules[count($rules) - 1];
 
         $result = !empty($needed_rule)
-            ? \current($needed_rule)->formatNumber($this->number)
+            ? current($needed_rule)->formatNumber($this->number)
             : $last_rule->formatNumber($this->number);
 
         return $number_is_negative ? "-{$result}" : $result;
@@ -87,7 +75,7 @@ final class Number
      */
     private function getRuleThatMatchesNumber(array $rules): array
     {
-        return \array_filter($rules, function ($rule) {
+        return array_filter($rules, function ($rule) {
             return $rule->inRange($this->number);
         });
     }
