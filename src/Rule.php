@@ -37,7 +37,7 @@ class Rule
             return $num . $this->getSuffix();
         }
 
-        $short_num = \explode(',', \number_format((float) $num))[0];
+        $short_num = explode(',', number_format((float) $num))[0];
 
         return $short_num . $this->getSuffix();
     }

@@ -3,6 +3,7 @@
 ## v3.0.7 (2024-09-08)
 - Remove not working badge from `README.md` file
 - Update composer dev packages to the latest versions
+- Remove backslashes from each native PHP function in the codebase
 
 ## v3.0.6 (2024-03-07)
 - Fixed typos in `CHANGELOG.md` file

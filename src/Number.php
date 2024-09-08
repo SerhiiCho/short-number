@@ -39,7 +39,7 @@ final class Number
         $number_is_negative = $number < 0;
 
         if ($number_is_negative) {
-            $this->number = (int) \abs($this->number);
+            $this->number = (int) abs($this->number);
         }
 
         $rules = $this->createRules();
@@ -48,7 +48,7 @@ final class Number
         $last_rule = $rules[count($rules) - 1];
 
         $result = !empty($needed_rule)
-            ? \current($needed_rule)->formatNumber($this->number)
+            ? current($needed_rule)->formatNumber($this->number)
             : $last_rule->formatNumber($this->number);
 
         return $number_is_negative ? "-{$result}" : $result;
@@ -75,7 +75,7 @@ final class Number
      */
     private function getRuleThatMatchesNumber(array $rules): array
     {
-        return \array_filter($rules, function ($rule) {
+        return array_filter($rules, function ($rule) {
             return $rule->inRange($this->number);
         });
     }
