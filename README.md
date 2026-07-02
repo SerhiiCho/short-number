@@ -39,13 +39,13 @@ To build an image, navigate to the root of the project and run this command.
 With Podman:
 
 ```bash
-podman-compose build app
+podman-compose build
 ```
 
 With Docker:
 
 ```bash
-docker compose build app
+docker compose build
 ```
 
 #### Run the Container
@@ -55,13 +55,29 @@ To run a container, navigate to the root of the project and run this command.
 With Podman:
 
 ```bash
-podman-compose run --rm app
+podman-compose up -d
 ```
 
 With Docker:
 
 ```bash
-docker compose run --rm app
+docker compose up -d
+```
+
+#### Enter the Container
+
+Enter a container if you need to run composer.
+
+With Podman:
+
+```bash
+podman-compose exec app bash
+```
+
+With Docker:
+
+```bash
+docker compose exec app bash
 ```
 
 #### Cleanup

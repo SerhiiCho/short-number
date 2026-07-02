@@ -5,7 +5,7 @@ services:
         build: .
         image: short-number
         volumes:
-            - .:/app:z
+            - .:/var/www/html:z
         environment:
             - TERM=xterm-256color
         tty: true
