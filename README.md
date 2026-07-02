@@ -15,54 +15,67 @@ composer require serhii/short-number
 ```
 
 ## Supported Languages
-| Flag | Language           | Code |
-| ---- | ------------------ | ---- |
-| 🇬🇧   | English            | en   |
-| 🇷🇺   | Russian            | ru   |
-| 🇺🇦   | Ukrainian          | uk   |
-| 🇨🇳   | Chinese            | zh   |
-| 🇯🇵   | Japanese           | ja   |
+
+| Flag | Language  | Code |
+| ---- | --------- | ---- |
+| 🇬🇧   | English   | en   |
+| 🇷🇺   | Russian   | ru   |
+| 🇺🇦   | Ukrainian | uk   |
+| 🇨🇳   | Chinese   | zh   |
+| 🇯🇵   | Japanese  | ja   |
 
 ## License
+
 The Short Number project is licensed under the [MIT License](https://github.com/short-number/short-number/blob/master/LICENSE.md)
 
 ## Contribute
+
 ### With Container Engine
+
 #### Build an Image
+
 To build an image, navigate to the root of the project and run this command.
 
 With Podman:
+
 ```bash
 podman-compose build app
 ```
 
 With Docker:
+
 ```bash
 docker compose build app
 ```
 
 #### Run the Container
+
 To run a container, navigate to the root of the project and run this command.
 
 With Podman:
+
 ```bash
 podman-compose run --rm app
 ```
 
 With Docker:
+
 ```bash
 docker compose run --rm app
 ```
 
 #### Cleanup
+
 You can remove networks and cleanup by running this command.
 
 With Podman:
+
 ```bash
 podman-compose down
 ```
 
 With Docker:
+
 ```bash
 docker compose down
 ```
